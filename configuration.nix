@@ -11,7 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Network configuration
-  networking.hostName = "nixos-hyprland";
+  networking.hostName = "moroni";
   networking.networkmanager.enable = true;
 
   # Time zone and internationalization
@@ -31,7 +31,11 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
+
+  # If you don't use hyprlock, you won't need this option
+  # security.pam.services.hyprlock = {};
 
   # XDG portal for screen sharing and file dialogs
   xdg.portal = {
