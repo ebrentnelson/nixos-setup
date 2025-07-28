@@ -238,4 +238,6 @@ nnoremap <C-n> :tabnext<CR>
 " Terminal mode escape
 tnoremap <Esc> <C-\><C-n>
 
+command! PrettyEDN %!clojure -M -e "(require '[clojure.pprint :as pp]) (pp/pprint (read-string (slurp *in*)))"
+
 set secure
