@@ -98,14 +98,12 @@ Plug 'vim-airline/vim-airline-themes'  " Status line themes
 " File navigation
 Plug 'ctrlpvim/ctrlp.vim'              " Fuzzy finder
 
-" LSP and completion
-Plug 'neovim/nvim-lspconfig'           " LSP configurations
-Plug 'williamboman/mason.nvim'         " LSP installer (replaces nvim-lsp-installer)
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'hrsh7th/nvim-cmp'                " Completion engine
-Plug 'hrsh7th/cmp-nvim-lsp'            " LSP completion source
-Plug 'hrsh7th/cmp-buffer'              " Buffer completion source
-Plug 'hrsh7th/cmp-path'                " Path completion source
+" LSP and completion - using older compatible versions
+Plug 'neovim/nvim-lspconfig', { 'tag': 'v0.1.6' }
+Plug 'hrsh7th/nvim-cmp', { 'tag': 'v0.0.1' }
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
 
 " Language specific
 Plug 'guns/vim-sexp', {'for': 'clojure'}     " S-expression editing
@@ -119,29 +117,24 @@ set completeopt=menu,menuone,noselect
 " ================ LSP and Completion Setup ========
 
 lua << EOF
--- Mason setup (replaces nvim-lsp-installer)
-require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = {
-    "clojure_lsp",    -- Clojure
-    "pyright",        -- Python  
-    "tsserver",       -- JavaScript/TypeScript
-  },
-  automatic_installation = true,
-})
+-- Simple LSP setup without Mason (manual install required)
+local lspconfig = require('lspconfig')
 
 -- Setup nvim-cmp
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 cmp.setup({
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
     ['<Tab>'] = cmp.mapping.confirm({ select = true }),
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
-  }),
+  },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'buffer' },
@@ -152,33 +145,37 @@ cmp.setup({
 -- LSP setup
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- Clojure LSP
-require('lspconfig').clojure_lsp.setup({
+-- Manual LSP server setup (install servers manually)
+-- Clojure: Install clojure-lsp
+lspconfig.clojure_lsp.setup({
   capabilities = capabilities,
 })
 
--- Python LSP
-require('lspconfig').pyright.setup({
+-- Python: pip install python-lsp-server
+lspconfig.pylsp.setup({
   capabilities = capabilities,
 })
 
--- JavaScript/TypeScript LSP
-require('lspconfig').tsserver.setup({
+-- JavaScript: npm install -g typescript-language-server
+lspconfig.tsserver.setup({
   capabilities = capabilities,
 })
 
 -- LSP key mappings
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-  end,
-})
+local on_attach = function(client, bufnr)
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+end
+
+-- Apply on_attach to all servers
+lspconfig.clojure_lsp.setup({ on_attach = on_attach, capabilities = capabilities })
+lspconfig.pylsp.setup({ on_attach = on_attach, capabilities = capabilities })
+lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
 EOF
 
 " ================ Plugin Configuration =============
