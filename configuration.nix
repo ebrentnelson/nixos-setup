@@ -14,6 +14,14 @@
   networking.hostName = "moroni";
   networking.networkmanager.enable = true;
 
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "weekly";
+
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 10d";
+  nix.settings.auto-optimise-store = true;
+
   # Time zone and internationalization
   time.timeZone = "America/Boise"; # Adjust to your timezone
   i18n.defaultLocale = "en_US.UTF-8";
@@ -56,7 +64,7 @@
   };
 
   # User account
-  users.users.ebn = { 
+  users.users.ebn = {
     isNormalUser = true;
     description = "E Brent Nelson";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -85,15 +93,15 @@
     grim           # Screenshot utility
     slurp          # Screen area selection
     mako           # Notification daemon
-    
+
     # System utilities
     networkmanagerapplet
     pavucontrol    # Audio control
     brightnessctl  # Brightness control (for laptops)
-    
+
     # File manager
     nautilus
-    
+
     # Terminal
     kitty          # Alternative terminal (you have ghostty too)
   ];
