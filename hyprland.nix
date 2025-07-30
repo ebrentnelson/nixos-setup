@@ -77,7 +77,7 @@
       dwindle = {
         pseudotile = true;
         preserve_split = true;
-      }
+      };
 
       # Window rules
       windowrule = [
