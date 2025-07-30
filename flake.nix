@@ -26,14 +26,14 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.ebn = import ./ebn.nix;
+            users.ebn = import ./users/ebn/home.nix;
           };
         }
       ];
     };
 
     # Helper function to create configurations with custom hostnames
-    nixosConfigurations = 
+    nixosConfigurations =
       let
         mkSystem = hostname: nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -48,7 +48,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.ebn = import ./home.nix;
+                users.ebn = import ./users/ebn/home.nix;
               };
             }
           ];
@@ -56,7 +56,7 @@
       in {
         # Default fallback
         default = mkSystem "nixos";
-        
+
         # Predefined hosts (optional - for commonly used machines)
         moroni = mkSystem "moroni";
         # nephi = mkSystem "nephi";
