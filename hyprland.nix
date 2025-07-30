@@ -90,10 +90,10 @@
 
       # Basic bindings
       bind = [
-        "$mainMod, Q, exec, ghostty"
+        "$mainMod, Q, exec, kitty"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
-        "$mainMod, E, exec, nautilus"
+        "$mainMod, E, exec, thunar"
         "$mainMod, V, togglefloating,"
         "$mainMod, R, exec, wofi --show drun"
         "$mainMod, P, pseudo,"
