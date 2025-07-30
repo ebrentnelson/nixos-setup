@@ -19,7 +19,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.ebn = import ./home.nix;
+            users.ebn = import ./ebn.nix;
           };
         }
       ];
