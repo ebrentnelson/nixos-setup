@@ -24,8 +24,8 @@
   # Git configuration (optional - you can configure this here)
   programs.git = {
     enable = true;
-    userName = "E Brent Nelson";
-    userEmail = "ebrentnelson@gmail.com"; # Replace with your email
+    userName = "FIXME";
+    userEmail = "FIXME"; # Replace with your email
   };
 
   # Zsh configuration (since you use zsh as your shell)

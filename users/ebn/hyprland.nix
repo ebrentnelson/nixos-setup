@@ -4,10 +4,12 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      # ~/.config/hypr/hyprland.conf
-
       # Monitor configuration
-      monitor = ",preferred,auto,auto";
+      monitor = [
+        ",preferred,auto,auto"
+        ",1920x1080@60,auto,1"
+        ",auto,auto,1"
+      ];
 
       # Execute your favorite apps at launch
       exec-once = [
