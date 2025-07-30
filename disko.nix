@@ -1,12 +1,10 @@
-{ pkgs, lib, ... }:
+# disko.nix - Dynamic disk configuration
+{ pkgs, lib, disko-disk ? "/dev/nvme0n1", ... }:
 
-let
-  disk = "/dev/nvme0n1"; # Replace with your disk
-in
 {
   disko.devices = {
     disk.main = {
-      device = disk;
+      device = disko-disk;
       type = "disk";
       content = {
         type = "gpt";
