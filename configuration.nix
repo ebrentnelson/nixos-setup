@@ -14,9 +14,11 @@
   networking.hostName = "moroni";
   networking.networkmanager.enable = true;
 
+  # Upgrades
   system.autoUpgrade.enable = true;
   system.autoUpgrade.dates = "weekly";
 
+  # Garbage Collection
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
   nix.gc.options = "--delete-older-than 10d";
@@ -68,7 +70,7 @@
     isNormalUser = true;
     description = "E Brent Nelson";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.bash; # or pkgs.zsh if you prefer
+    shell = pkgs.zsh;
   };
 
   # System packages
