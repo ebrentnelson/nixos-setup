@@ -101,9 +101,6 @@
     pavucontrol    # Audio control
     brightnessctl  # Brightness control (for laptops)
 
-    # File manager
-    thunar
-
     # Terminal
     kitty          # Alternative terminal (you have ghostty too)
   ];
