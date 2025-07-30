@@ -82,7 +82,7 @@
 
     # Applications
     google-chrome
-    ghostty
+    #ghostty
     spotify
     synergy
     dropbox
@@ -102,7 +102,7 @@
     brightnessctl  # Brightness control (for laptops)
 
     # File manager
-    nautilus
+    thunar
 
     # Terminal
     kitty          # Alternative terminal (you have ghostty too)
