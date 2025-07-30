@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  disk = "/dev/sda"; # Replace with your disk
+  disk = "/dev/nvme0n1"; # Replace with your disk
 in
 {
   disko.devices = {
