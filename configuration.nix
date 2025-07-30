@@ -41,7 +41,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    withUWSM = true;
+    # withUWSM = true;
   };
 
   # XDG portal for screen sharing and file dialogs
