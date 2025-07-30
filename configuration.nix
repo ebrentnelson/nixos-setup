@@ -25,7 +25,7 @@
   nix.settings.auto-optimise-store = true;
 
   # Time zone and internationalization
-  time.timeZone = "America/Boise"; # Adjust to your timezone
+  time.timeZone = "America/Boise";
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Enable the X11 windowing system and Wayland
@@ -43,9 +43,6 @@
     xwayland.enable = true;
     withUWSM = true;
   };
-
-  # If you don't use hyprlock, you won't need this option
-  # security.pam.services.hyprlock = {};
 
   # XDG portal for screen sharing and file dialogs
   xdg.portal = {
@@ -72,6 +69,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
+
+  # Enable zsh system-wide
+  programs.zsh.enable = true;
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -129,14 +129,12 @@
     allowedUDPPorts = [ ];
   };
 
-  # Enable flakes (optional but recommended)
+  # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Allow unfree packages (needed for Chrome, Spotify, etc.)
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. Don't change this after installation.
-  system.stateVersion = "24.05"; # Check current stable version
+  # This value determines the NixOS release
+  system.stateVersion = "24.05";
 }
