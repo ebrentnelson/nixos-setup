@@ -84,7 +84,8 @@
     google-chrome
     #ghostty
     spotify
-    synergy
+    #synergy
+    deskflow
     dropbox
     obsidian
 
