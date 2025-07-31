@@ -13,54 +13,32 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, ... }: {
-    # Default configuration - you can still use this
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        ./disko.nix
-        disko.nixosModules.disko
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.ebn = import ./users/ebn/home.nix;
-          };
-        }
-      ];
-    };
-
-    # Helper function to create configurations with custom hostnames
-    nixosConfigurations =
-      let
-        mkSystem = hostname: nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit hostname; };
-          modules = [
-            ./configuration.nix
-            ./disko.nix
-            disko.nixosModules.disko
-            home-manager.nixosModules.home-manager
-            {
-              networking.hostName = hostname;
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.ebn = import ./users/ebn/home.nix;
-              };
-            }
-          ];
-        };
-      in {
-        # Default fallback
+  outputs = { self, nixpkgs, home-manager, disko, ... }:
+    let
+      mkSystem = hostname: nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit hostname; };
+        modules = [
+          ./configuration.nix
+          ./disko.nix
+          disko.nixosModules.disko
+          home-manager.nixosModules.home-manager
+          {
+            networking.hostName = hostname;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.ebn = import ./users/ebn/home.nix;
+            };
+          }
+        ];
+      };
+    in {
+      nixosConfigurations = {
         default = mkSystem "nixos";
-
-        # Predefined hosts (optional - for commonly used machines)
         moroni = mkSystem "moroni";
         # nephi = mkSystem "nephi";
         # alma = mkSystem "alma";
       };
-  };
+    };
 }
