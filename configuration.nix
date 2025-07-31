@@ -2,9 +2,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  # imports = [
+  #   ./hardware-configuration.nix
+  # ];
 
   # Boot configuration
   boot.loader.systemd-boot.enable = true;
