@@ -13,16 +13,22 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, ... }: 
+  outputs = { self, nixpkgs, home-manager, disko, ... }:
     let
       # Clean function to create systems with dynamic disk argument
-      mkSystem = hostname: { disko-disk ? "/dev/nvme0n1" }@args: 
+      mkSystem = hostname:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
-            (import ./disko.nix args)
+            ./disk-config.nix
             disko.nixosModules.disko
+            ({pkgs, ...}: {
+              boot.loader = {
+                systemd-boot.enable = true;
+                efi.canTouchEfiVariables = true;
+              }
+            })
             home-manager.nixosModules.home-manager
             {
               networking.hostName = hostname;
@@ -37,9 +43,9 @@
     in {
       nixosConfigurations = {
         moroni = mkSystem "moroni";
-        nephi = mkSystem "nephi";
-        alma = mkSystem "alma";
-        helaman = mkSystem "helaman";
+        # nephi = mkSystem "nephi";
+        # alma = mkSystem "alma";
+        # helaman = mkSystem "helaman";
         # Easy to add new machines - just one line each
       };
     };

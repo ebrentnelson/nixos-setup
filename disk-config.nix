@@ -1,10 +1,7 @@
-# disko.nix - Dynamic disk configuration
-{ pkgs, lib, disko-disk ? "/dev/nvme0n1", ... }:
-
 {
   disko.devices = {
     disk.main = {
-      device = disko-disk;
+      device = "/dev/some-random-disk";
       type = "disk";
       content = {
         type = "gpt";
