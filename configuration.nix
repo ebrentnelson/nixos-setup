@@ -107,7 +107,13 @@
   ];
 
   # Fonts
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts.packages = with pkgs; [
+    nerd-fonts.geist-mono
+    nerd-fonts.iosevka-term
+    nerd-fonts.lilex
+    nerd-fonts.open-dyslexic
+    nerd-fonts.zed-mono
+  ];
 
   # Enable some services
   services.openssh.enable = true;
