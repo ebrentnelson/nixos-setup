@@ -11,12 +11,11 @@
         partitions = {
           ESP = {
             size = "512M";
-            type = "efi";
-            bootable = true;
+            type = "EF00";
             content = {
               type = "filesystem";
               format = "vfat";
-              mountpoint = "/boot/efi";
+              mountpoint = "/boot";
             };
           };
           swap = {
