@@ -107,14 +107,7 @@
   ];
 
   # Fonts
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-  ];
+  fonts.packages = with pkgs; [ nerdfonts ];
 
   # Enable some services
   services.openssh.enable = true;
