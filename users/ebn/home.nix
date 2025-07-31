@@ -13,7 +13,7 @@
   # This value determines the Home Manager release which your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 
   # Additional Home Manager packages (things you want in your user environment)
   home.packages = with pkgs; [
