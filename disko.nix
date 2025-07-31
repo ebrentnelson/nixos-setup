@@ -1,22 +1,23 @@
-# disko.nix - Dynamic disk configuration
-{ pkgs, lib, disko-disk ? "/dev/nvme0n1", ... }:
+{ pkgs, lib, ... }:
 
+let
+  disk = "/dev/sda"; # Replace with your disk
+in
 {
   disko.devices = {
     disk.main = {
-      device = disko-disk;
+      device = disk;
       type = "disk";
       content = {
         type = "gpt";
         partitions = {
           ESP = {
             size = "512M";
-            type = "efi";
-            bootable = true;
+            type = "EF00"; # EFI System Partition type
             content = {
               type = "filesystem";
               format = "vfat";
-              mountpoint = "/boot/efi";
+              mountpoint = "/boot";
             };
           };
           swap = {
