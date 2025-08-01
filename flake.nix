@@ -13,40 +13,32 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, ... }:
-    let
-      mkSystem = hostname:
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./configuration.nix
-            ./disk-config.nix
-            disko.nixosModules.disko
-            ({pkgs, ...}: {
-              boot.loader = {
-                systemd-boot.enable = true;
-                efi.canTouchEfiVariables = true;
-              };
-            })
-            home-manager.nixosModules.home-manager
-            {
-              networking.hostName = hostname;
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.ebn = import ./users/ebn/home.nix;
-              };
-            }
-          ];
-        };
-    in {
-      nixosConfigurations = {
-        moroni = mkSystem "moroni";
-      };
-      
-      # Add this - expose disko configs
-      diskoConfigurations = {
-        moroni = import ./disk-config.nix;
-      };
+  outputs = { nixpkgs, home-manager, disko, ... }: {
+    nixosConfigurations.moroni = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./configuration.nix
+        ./disk-config.nix
+        disko.nixosModules.disko
+        home-manager.nixosModules.home-manager
+        {
+          networking.hostName = "moroni";
+          
+          boot.loader = {
+            systemd-boot.enable = true;
+            efi.canTouchEfiVariables = true;
+          };
+          
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.ebn = import ./users/ebn/home.nix;
+          };
+        }
+      ];
     };
+
+    # Expose disko config for the disko command
+    diskoConfigurations.moroni = import ./disk-config.nix;
+  };
 }
