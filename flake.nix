@@ -13,8 +13,11 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, disko, ... }: {
-    nixosConfigurations.moroni = nixpkgs.lib.nixosSystem {
+  outputs = { nixpkgs, home-manager, disko, ... }: 
+  let
+    hostname = "moroni";  # Change this one line to rename the host
+  in {
+    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
@@ -22,7 +25,7 @@
         disko.nixosModules.disko
         home-manager.nixosModules.home-manager
         {
-          networking.hostName = "moroni";
+          networking.hostName = hostname;
           
           boot.loader = {
             systemd-boot.enable = true;
@@ -39,6 +42,6 @@
     };
 
     # Expose disko config for the disko command
-    diskoConfigurations.moroni = import ./disk-config.nix;
+    diskoConfigurations.${hostname} = import ./disk-config.nix;
   };
 }
