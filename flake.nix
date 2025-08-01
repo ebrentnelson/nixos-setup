@@ -15,7 +15,6 @@
 
   outputs = { self, nixpkgs, home-manager, disko, ... }:
     let
-      # Clean function to create systems with dynamic disk argument
       mkSystem = hostname:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -43,10 +42,11 @@
     in {
       nixosConfigurations = {
         moroni = mkSystem "moroni";
-        # nephi = mkSystem "nephi";
-        # alma = mkSystem "alma";
-        # helaman = mkSystem "helaman";
-        # Easy to add new machines - just one line each
+      };
+      
+      # Add this - expose disko configs
+      diskoConfigurations = {
+        moroni = import ./disk-config.nix;
       };
     };
 }
