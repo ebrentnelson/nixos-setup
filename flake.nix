@@ -8,12 +8,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
-      url = "github:nix-community/disko";
+      url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, disko, ... }: 
+  outputs = { nixpkgs, home-manager, disko, ... }:
   let
     hostname = "moroni";  # Change this one line to rename the host
   in {
@@ -21,17 +21,47 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-        ./disk-config.nix
         disko.nixosModules.disko
+        {
+          disko.devices = {
+            disk.main = {
+              device = "/dev/some-random-disk";
+              type = "disk";
+              content = {
+                type = "gpt";
+                partitions = {
+                  ESP = {
+                    size = "512M";
+                    type = "EF00";
+                    content = {
+                      type = "filesystem";
+                      format = "vfat";
+                      mountpoint = "/boot";
+                    };
+                  };
+                  swap = {
+                    size = "8G";
+                    content = {
+                      type = "swap";
+                      resumeDevice = true;
+                    };
+                  };
+                  root = {
+                    size = "100%";
+                    content = {
+                      type = "filesystem";
+                      format = "btrfs";
+                      mountpoint = "/";
+                    };
+                  };
+                };
+              };
+            };
+          };
+        }
         home-manager.nixosModules.home-manager
         {
           networking.hostName = hostname;
-          
-          boot.loader = {
-            systemd-boot.enable = true;
-            efi.canTouchEfiVariables = true;
-          };
-          
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
@@ -40,8 +70,5 @@
         }
       ];
     };
-
-    # Expose disko config for the disko command
-    diskoConfigurations.${hostname} = import ./disk-config.nix;
   };
 }

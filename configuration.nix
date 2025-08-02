@@ -2,14 +2,6 @@
 { config, pkgs, ... }:
 
 {
-  # imports = [
-  #   ./hardware-configuration.nix
-  # ];
-
-  # Boot configuration
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   # Network configuration
   networking.hostName = "moroni";
   networking.networkmanager.enable = true;
