@@ -2,6 +2,11 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
+
   # Network configuration
   networking.hostName = "moroni";
   networking.networkmanager.enable = true;
