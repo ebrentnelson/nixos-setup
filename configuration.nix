@@ -7,6 +7,10 @@
       ./hardware-configuration.nix
     ];
 
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   # Network configuration
   networking.hostName = "moroni";
   networking.networkmanager.enable = true;
