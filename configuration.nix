@@ -6,7 +6,7 @@
   #   [ # Include the results of the hardware scan.
   #     ./hardware-configuration.nix
   #   ];
-  boot.runSize = "10G"
+  boot.runSize = "10G";
 
   # Network configuration
   networking.hostName = "moroni";
