@@ -2,8 +2,6 @@
 { config, pkgs, ... }:
 
 {
-  boot.initrd.tmpfs.size = "20G";
-
   # Network configuration
   networking.hostName = "moroni";
   networking.networkmanager.enable = true;
