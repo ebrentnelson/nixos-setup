@@ -6,7 +6,8 @@
   #   [ # Include the results of the hardware scan.
   #     ./hardware-configuration.nix
   #   ];
-  boot.runSize = "10G";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Network configuration
   networking.hostName = "moroni";
