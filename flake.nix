@@ -24,7 +24,7 @@
         {
           disko.devices = {
             disk.main = {
-              device = "/dev/some-random-disk";
+              device = "/dev/disk/by-id/some-disk-id";
               type = "disk";
               content = {
                 type = "gpt";
