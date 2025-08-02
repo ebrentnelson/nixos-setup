@@ -20,7 +20,6 @@
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
         disko.nixosModules.disko
         {
           disko.devices = {
@@ -59,6 +58,7 @@
             };
           };
         }
+        ./configuration.nix
         home-manager.nixosModules.home-manager
         {
           networking.hostName = hostname;
