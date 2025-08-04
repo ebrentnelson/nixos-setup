@@ -90,7 +90,6 @@
     dropbox
     obsidian
 
-    deskflow
     # Deskflow wrapper with X11 environment
     (pkgs.writeShellScriptBin "deskflow" ''
     export WAYLAND_DISPLAY=""
