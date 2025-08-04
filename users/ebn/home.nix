@@ -34,6 +34,14 @@
     # Add any zsh-specific configuration here
   };
 
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "OpenDyslexic";
+      size = 12;
+    };
+  };
+
   programs.starship = {
     enable = true;
     settings = {
