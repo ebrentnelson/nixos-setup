@@ -88,6 +88,13 @@
     spotify
     #synergy
     deskflow
+    (pkgs.makeDesktopItem {
+      name = "deskflow";
+      desktopName = "Deskflow";
+      exec = "sh -c 'WAYLAND_DISPLAY=\"\" GDK_BACKEND=x11 QT_QPA_PLATFORM=xcb XDG_SESSION_TYPE=x11 deskflow'";
+      noDisplay = true;
+      categories = [ "System" ];
+    })
     dropbox
     obsidian
 
@@ -132,24 +139,6 @@
     enable = true;
     allowedTCPPorts = [ 24800 ];
     allowedUDPPorts = [ ];
-  };
-
-  # Deskflow service
-  systemd.user.services.deskflow-gui = {
-    description = "Deskflow GUI";
-    wantedBy = [ "graphical-session.target" ];
-    environment = {
-      WAYLAND_DISPLAY = "";
-      GDK_BACKEND = "x11";
-      QT_QPA_PLATFORM = "xcb";
-      XDG_SESSION_TYPE = "x11";
-      DISPLAY = ":0";
-    };
-    serviceConfig = {
-      ExecStart = "${pkgs.deskflow}/bin/deskflow";
-      Restart = "always";
-      RestartSec = "5";
-    };
   };
 
   # Enable flakes
