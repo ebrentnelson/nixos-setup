@@ -72,11 +72,6 @@
   # Enable file manager
   programs.thunar.enable = true;
 
-  services.mako = {
-    enable = true;
-    defaultTimeout = 5000;
-  };
-
   # System packages
   environment.systemPackages = with pkgs; [
     # Development tools

@@ -18,7 +18,7 @@
       # Execute your favorite apps at launch
       exec-once = [
         "waybar"
-        "mako"
+        "mako --default-timeout 5000"
         "nm-applet --indicator"
         "dropbox start"
       ];
