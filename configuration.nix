@@ -88,7 +88,6 @@
     spotify
     dropbox
     obsidian
-    lan-mouse
 
     # Hyprland essentials
     waybar          # Status bar
