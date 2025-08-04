@@ -35,15 +35,12 @@
     # Add any zsh-specific configuration here
   };
 
-  programs.kitty = {
+  programs.ghostty = {
     enable = true;
-    font = {
-      name = "OpenDyslexic Nerd Font";
-      size = 12;
-    };
     settings = {
-      background_opacity = "0.85";  # 0.0 = fully transparent, 1.0 = fully opaque
-      dynamic_background_opacity = true;  # Allows changing opacity with Ctrl+Shift+A/L
+      background-opacity = "0.85";  # 0.0 = fully transparent, 1.0 = fully opaque
+      font-family = "OpenDyslexic Nerd Font";
+      font-size = 12;
     };
   };
 

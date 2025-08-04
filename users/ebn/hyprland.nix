@@ -93,7 +93,7 @@
 
       # Key bindings
       "$mainMod" = "SUPER";
-      "$terminal" = "kitty";
+      "$terminal" = "ghostty";
       "$browser" = "MOZ_ENABLE_WAYLAND=1 firefox --new-window";
 
       # Basic bindings
@@ -174,7 +174,7 @@
 
 
         # Application bindings
-        "$mainMod, return, exec, kitty"
+        "$mainMod, return, exec, $terminal"
         "$mainMod, F, exec, thunar"
         "$mainMod, B, exec, $browser"
         "$mainMod, space, exec, wofi --show drun"

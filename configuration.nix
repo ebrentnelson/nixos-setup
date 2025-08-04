@@ -84,10 +84,20 @@
     # Applications
     google-chrome
     firefox
-    #ghostty
+    ghostty
     spotify
     #synergy
-    deskflow
+    #deskflow (see below)
+    (pkgs.writeShellScriptBin "deskflow" ''
+    export GDK_BACKEND=x11
+    export QT_QPA_PLATFORM=xcb
+    exec ${pkgs.deskflow}/bin/deskflow "$@"
+    '')
+    (pkgs.writeShellScriptBin "deskflow-server" ''
+    export GDK_BACKEND=x11
+    export QT_QPA_PLATFORM=xcb  
+    exec ${pkgs.deskflow}/bin/deskflow-server "$@"
+    '')
     dropbox
     obsidian
 
@@ -106,7 +116,7 @@
     brightnessctl  # Brightness control (for laptops)
 
     # Terminal
-    kitty          # Alternative terminal (you have ghostty too)
+    #kitty          # Alternative terminal (you have ghostty too)
   ];
 
   environment.variables = {
