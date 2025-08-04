@@ -87,7 +87,12 @@
     ghostty
     spotify
     #synergy
-    deskflow
+    #deskflow
+    (pkgs.writeShellScriptBin "deskflow" ''
+    export GDK_BACKEND=x11
+    export QT_QPA_PLATFORM=xcb
+    exec ${pkgs.deskflow}/bin/deskflow "$@"
+    '')
     dropbox
     obsidian
 
@@ -144,7 +149,7 @@
       DISPLAY = ":0";
     };
     serviceConfig = {
-      ExecStart = "${pkgs.deskflow}/bin/deskflow-server -f --debug INFO --name moroni --enable-crypto --disable-client-cert-check --address :24800 -c %h/.config/Deskflow/deskflow-server.conf --tls-cert %h/.config/Deskflow/tls/deskflow.pem";
+      ExecStart = "${pkgs.deskflow}/bin/deskflow-server";
       Restart = "always";
       RestartSec = "5";
     };
