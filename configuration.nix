@@ -87,17 +87,7 @@
     ghostty
     spotify
     #synergy
-    #deskflow (see below)
-    (pkgs.writeShellScriptBin "deskflow" ''
-    export GDK_BACKEND=x11
-    export QT_QPA_PLATFORM=xcb
-    exec ${pkgs.deskflow}/bin/deskflow "$@"
-    '')
-    (pkgs.writeShellScriptBin "deskflow-server" ''
-    export GDK_BACKEND=x11
-    export QT_QPA_PLATFORM=xcb  
-    exec ${pkgs.deskflow}/bin/deskflow-server "$@"
-    '')
+    deskflow
     dropbox
     obsidian
 
@@ -142,6 +132,22 @@
     enable = true;
     allowedTCPPorts = [ 24800 ];
     allowedUDPPorts = [ ];
+  };
+
+  # Deskflow service
+  systemd.user.services.deskflow-server = {
+    description = "Deskflow Server";
+    wantedBy = [ "graphical-session.target" ];
+    environment = {
+      GDK_BACKEND = "x11";
+      QT_QPA_PLATFORM = "xcb";
+      DISPLAY = ":0";
+    };
+    serviceConfig = {
+      ExecStart = "${pkgs.deskflow}/bin/deskflow-server -f --debug INFO --name moroni --enable-crypto --disable-client-cert-check --address :24800 -c %h/.config/Deskflow/deskflow-server.conf --tls-cert %h/.config/Deskflow/tls/deskflow.pem";
+      Restart = "always";
+      RestartSec = "5";
+    };
   };
 
   # Enable flakes

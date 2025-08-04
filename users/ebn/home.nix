@@ -39,7 +39,7 @@
     enable = true;
     settings = {
       background-opacity = "0.85";  # 0.0 = fully transparent, 1.0 = fully opaque
-      font-family = "OpenDyslexic Nerd Font";
+      font-family = "Lilex Nerd Font";
       font-size = 12;
     };
   };
