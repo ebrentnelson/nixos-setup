@@ -46,6 +46,7 @@
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
     ];
   };
 
@@ -129,7 +130,7 @@
   # Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ ];
+    allowedTCPPorts = [ 24800 ];
     allowedUDPPorts = [ ];
   };
 

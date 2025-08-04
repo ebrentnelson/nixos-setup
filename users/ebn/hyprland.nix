@@ -4,9 +4,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      # debug = {
-      #   suppress_errors = true;
-      # };
+      debug = {
+        suppress_errors = true;
+      };
 
       # Monitor configuration
       monitor = [
