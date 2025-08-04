@@ -4,6 +4,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      debug = {
+        suppress_errors = true;
+      };
+
       # Monitor configuration
       monitor = [
         ",preferred,auto,auto"
@@ -95,7 +99,7 @@
         "$mainMod, Q, exec, kitty"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
-        "$mainMod, E, exec, dolphin"
+        "$mainMod, E, exec, thunar"
         "$mainMod, V, togglefloating,"
         "$mainMod, R, exec, wofi --show drun"
         "$mainMod, P, pseudo,"

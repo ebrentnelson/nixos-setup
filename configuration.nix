@@ -2,10 +2,12 @@
 { config, pkgs, ... }:
 
 {
-  # imports =
-  #   [ # Include the results of the hardware scan.
-  #     ./hardware-configuration.nix
-  #   ];
+  imports =
+    [ # Include the results of the hardware scan.
+      /etc/nixos/hardware-configuration.nix
+    ];
+
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -72,15 +74,20 @@
   # Enable zsh system-wide
   programs.zsh.enable = true;
 
+  # Enable file manager
+  programs.thunar.enable = true;
+
   # System packages
   environment.systemPackages = with pkgs; [
     # Development tools
     git
+    gh
     neovim
     silver-searcher # ag
 
     # Applications
     google-chrome
+    firefox
     #ghostty
     spotify
     #synergy

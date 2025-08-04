@@ -126,7 +126,7 @@
       -- Other LSPs you might want
       lspconfig.nil_ls.setup{ capabilities = capabilities }  -- Nix LSP
       lspconfig.rust_analyzer.setup{ capabilities = capabilities }
-      lspconfig.tsserver.setup{ capabilities = capabilities }
+      lspconfig.ts_ls.setup{ capabilities = capabilities }
       
       -- Completion setup
       local cmp = require('cmp')
