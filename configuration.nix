@@ -87,16 +87,29 @@
     ghostty
     spotify
     #synergy
+    dropbox
+    obsidian
+
     deskflow
+    # Deskflow wrapper with X11 environment
+    (pkgs.writeShellScriptBin "deskflow-x11" ''
+    export WAYLAND_DISPLAY=""
+    export GDK_BACKEND=x11
+    export QT_QPA_PLATFORM=xcb
+    export XDG_SESSION_TYPE=x11
+    exec ${pkgs.deskflow}/bin/deskflow "$@"
+    '')
+
+    # Override desktop entry to use wrapper
     (pkgs.makeDesktopItem {
       name = "deskflow";
       desktopName = "Deskflow";
-      exec = "sh -c 'WAYLAND_DISPLAY=\"\" GDK_BACKEND=x11 QT_QPA_PLATFORM=xcb XDG_SESSION_TYPE=x11 deskflow'";
-      noDisplay = true;
-      categories = [ "System" ];
+      exec = "deskflow-x11";  # Use the wrapper script
+      icon = "deskflow";
+      comment = "Keyboard and mouse sharing utility";
+      categories = [ "Network" "Utility" ];
+      # Remove noDisplay so it shows in wofi
     })
-    dropbox
-    obsidian
 
     # Hyprland essentials
     waybar          # Status bar
