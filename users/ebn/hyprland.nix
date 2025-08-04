@@ -93,29 +93,24 @@
 
       # Key bindings
       "$mainMod" = "SUPER";
+      "$terminal" = "kitty";
+      "$browser" = "MOZ_ENABLE_WAYLAND=1 firefox --new-window";
 
       # Basic bindings
       bind = [
-        "$mainMod, Q, exec, kitty"
-        "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
-        "$mainMod, E, exec, thunar"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, R, exec, wofi --show drun"
-        "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
+        # Close window
+        "$mainMod, W, killactive,"
 
+        # Control tiling
+        "$mainMod, J, togglesplit,"
+        "$mainMod, P, pseudo,"
+        "$mainMod, V, togglefloating,"
+        
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
-
-        # Workspace love
-        "CTRL, left, workspace, e-1"
-        "CTRL, right, workspace, e+1"
-        "CTRL_SHIFT, left, movetoworkspace, e-1"
-        "CTRL_SHIFT, right, movetoworkspace, e+1"
 
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
@@ -141,9 +136,36 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
+        # Swap active window with the one next to it with mainMod + SHIFT + arrow keys
+        "$mainMod SHIFT, left, Swap window to the left, swapwindow, l"
+        "$mainMod SHIFT, right, Swap window to the right, swapwindow, r"
+        "$mainMod SHIFT, up, Swap window up, swapwindow, u"
+        "$mainMod SHIFT, down, Swap window down, swapwindow, d"
+
+
+        # Cycle through applications on active workspace
+        "ALT, Tab, Cycle to next window, cyclenext"
+        "ALT, Tab, Reveal active window on top, bringactivetotop"
+
+        # Resize active window
+        "$mainMod, minus, Expand window left, resizeactive, -100 0"
+        "$mainMod, equal, Shrink window left, resizeactive, 100 0"
+        "$mainMod SHIFT, minus, Shrink window up, resizeactive, 0 -100"
+        "$mainMod SHIFT, equal, Expand window down, resizeactive, 0 100"
+
         # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod, mouse_down, Scroll active worspace forward, workspace, e+1"
+        "$mainMod, mouse_up, Scroll active workspace backward, workspace, e-1"
+
+        # Move/resize windows with mainMod + LMB/RMB and dragging
+        "$mainMod, mouse:272, Move window, movewindow"
+        "$mainMod, mouse:273, Resize window, resizewindow"
+
+        # Workspace love
+        "CTRL, left, workspace, e-1"
+        "CTRL, right, workspace, e+1"
+        "CTRL_SHIFT, left, movetoworkspace, e-1"
+        "CTRL_SHIFT, right, movetoworkspace, e+1"
 
         # Screenshots
         ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
@@ -157,6 +179,23 @@
         # Brightness controls (for laptops)
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+
+
+        # Application bindings
+        "$mainMod, return, Terminal,     exec, kitty"
+        "$mainMod, F,      File Manager, exec, thunar"
+        "$mainMod, B,      Browser,      exec, $browser"
+        "$mainMod, space,  Launch apps,  exec, wofi --show drun"
+        "$mainMod, M,      Music,        exec, spotify"
+        "$mainMod, N,      Neovim,       exec, $terminal -e nvim"
+        "$mainMod, O,      Obsidian,     exec, obsidian"
+
+        # Web app bindings
+        "$mainMod, A,       Claude,          exec, $browser \"https://claude.ai/\""
+        "$mainMod, E,       Email,           exec, $browser \"https://mail.google.com/\""
+        "$mainMod, C,       Calendar,        exec, $browser \"https://calendar.google.com/\""
+        "$mainMod SHIFT, G, WhatsApp,        exec, $browser \"https://web.whatsapp.com/\""
+        "$mainMod ALT, G,   Google Messages, exec, $browser \"https://messages.google.com/web/conversations/\""
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
