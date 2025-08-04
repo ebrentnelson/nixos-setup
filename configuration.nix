@@ -72,7 +72,7 @@
   # Enable file manager
   programs.thunar.enable = true;
 
-  programs.mako = {
+  services.mako = {
     enable = true;
     defaultTimeout = 5000;
   };
