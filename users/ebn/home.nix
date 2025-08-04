@@ -35,6 +35,11 @@
     # Add any zsh-specific configuration here
   };
 
+  programs.mako = {
+    enable = true;
+    defaultTimeout = 5000;
+  };
+
   programs.kitty = {
     enable = true;
     font = {
