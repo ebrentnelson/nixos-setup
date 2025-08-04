@@ -111,6 +111,12 @@
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
+        # Workspace love
+        "CTRL, left, workspace, e-1"
+        "CTRL, right, workspace, e+1"
+        "CTRL_SHIFT, left, movetoworkspace, e-1"
+        "CTRL_SHIFT, right, movetoworkspace, e+1"
+
         # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"

@@ -4,6 +4,7 @@
   imports = [
     ./hyprland.nix
     ./neovim.nix
+    ./starship.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should manage
@@ -37,22 +38,12 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "OpenDyslexic";
+      name = "OpenDyslexic Nerd Font";
       size = 12;
     };
-  };
-
-  programs.starship = {
-    enable = true;
     settings = {
-      add_newline = true;
-      command_timeout = 1300;
-      scan_timeout = 50;
-      format = "$all$nix_shell$nodejs$python$clojure$git_branch$git_commit$git_state$git_status\n$username$hostname$directory";
-      character = {
-        success_symbol = "[](bold green) ";
-        error_symbol = "[✗](bold red) ";
-      };
+      background_opacity = "0.85";  # 0.0 = fully transparent, 1.0 = fully opaque
+      dynamic_background_opacity = true;  # Allows changing opacity with Ctrl+Shift+A/L
     };
   };
 

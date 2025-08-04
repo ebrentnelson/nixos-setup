@@ -97,6 +97,7 @@
     grim           # Screenshot utility
     slurp          # Screen area selection
     mako           # Notification daemon
+    vanilla-dmz    # Sane cursor
 
     # System utilities
     networkmanagerapplet
@@ -106,6 +107,11 @@
     # Terminal
     kitty          # Alternative terminal (you have ghostty too)
   ];
+
+  environment.variables = {
+    XCURSOR_THEME = "Vanilla-DMZ";
+    XCURSOR_SIZE = "24";
+  };
 
   # Fonts
   fonts.packages = with pkgs; [
