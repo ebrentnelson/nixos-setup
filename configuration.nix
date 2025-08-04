@@ -86,26 +86,9 @@
     firefox
     ghostty
     spotify
-    #synergy
     dropbox
     obsidian
-
-    # Deskflow wrapper with X11 environment
-    (pkgs.writeShellScriptBin "deskflow" ''
-    export WAYLAND_DISPLAY=""
-    export GDK_BACKEND=x11
-    export QT_QPA_PLATFORM=xcb
-    export XDG_SESSION_TYPE=x11
-    exec ${pkgs.deskflow}/bin/deskflow "$@"
-    '')
-    (pkgs.makeDesktopItem {
-      name = "deskflow";
-      desktopName = "Deskflow";
-      exec = "deskflow";
-      icon = "deskflow";
-      comment = "Keyboard and mouse sharing utility";
-      categories = [ "Network" "Utility" ];
-    })
+    lan-mouse
 
     # Hyprland essentials
     waybar          # Status bar
