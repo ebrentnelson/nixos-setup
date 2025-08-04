@@ -182,20 +182,20 @@
 
 
         # Application bindings
-        "$mainMod, return, Terminal,     exec, kitty"
-        "$mainMod, F,      File Manager, exec, thunar"
-        "$mainMod, B,      Browser,      exec, $browser"
-        "$mainMod, space,  Launch apps,  exec, wofi --show drun"
-        "$mainMod, M,      Music,        exec, spotify"
-        "$mainMod, N,      Neovim,       exec, $terminal -e nvim"
-        "$mainMod, O,      Obsidian,     exec, obsidian"
+        "$mainMod, return, Terminal, exec, kitty"
+        "$mainMod, F, File Manager, exec, thunar"
+        "$mainMod, B, Browser, exec, $browser"
+        "$mainMod, space, Launch apps, exec, wofi --show drun"
+        "$mainMod, M, Music, exec, spotify"
+        "$mainMod, N, Neovim, exec, $terminal -e nvim"
+        "$mainMod, O, Obsidian, exec, obsidian"
 
         # Web app bindings
-        "$mainMod, A,       Claude,          exec, $browser \"https://claude.ai/\""
-        "$mainMod, E,       Email,           exec, $browser \"https://mail.google.com/\""
-        "$mainMod, C,       Calendar,        exec, $browser \"https://calendar.google.com/\""
-        "$mainMod SHIFT, G, WhatsApp,        exec, $browser \"https://web.whatsapp.com/\""
-        "$mainMod ALT, G,   Google Messages, exec, $browser \"https://messages.google.com/web/conversations/\""
+        "$mainMod, A, Claude, exec, $browser \"https://claude.ai/\""
+        "$mainMod, E, Email, exec, $browser \"https://mail.google.com/\""
+        "$mainMod, C, Calendar, exec, $browser \"https://calendar.google.com/\""
+        "$mainMod SHIFT, G, WhatsApp, exec, $browser \"https://web.whatsapp.com/\""
+        "$mainMod ALT, G, Google Messages, exec, $browser \"https://messages.google.com/web/conversations/\""
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
