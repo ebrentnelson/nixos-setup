@@ -4,9 +4,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      debug = {
-        suppress_errors = true;
-      };
+      # debug = {
+      #   suppress_errors = true;
+      # };
 
       # Monitor configuration
       monitor = [
@@ -137,29 +137,21 @@
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
         # Swap active window with the one next to it with mainMod + SHIFT + arrow keys
-        "$mainMod SHIFT, left, Swap window to the left, swapwindow, l"
-        "$mainMod SHIFT, right, Swap window to the right, swapwindow, r"
-        "$mainMod SHIFT, up, Swap window up, swapwindow, u"
-        "$mainMod SHIFT, down, Swap window down, swapwindow, d"
+        "$mainMod SHIFT, left, swapwindow, l"
+        "$mainMod SHIFT, right, swapwindow, r"
+        "$mainMod SHIFT, up, swapwindow, u"
+        "$mainMod SHIFT, down, swapwindow, d"
 
 
         # Cycle through applications on active workspace
-        "ALT, Tab, Cycle to next window, cyclenext"
-        "ALT, Tab, Reveal active window on top, bringactivetotop"
+        "ALT, Tab, cyclenext"
+        "ALT, Tab, bringactivetotop"
 
         # Resize active window
-        "$mainMod, minus, Expand window left, resizeactive, -100 0"
-        "$mainMod, equal, Shrink window left, resizeactive, 100 0"
-        "$mainMod SHIFT, minus, Shrink window up, resizeactive, 0 -100"
-        "$mainMod SHIFT, equal, Expand window down, resizeactive, 0 100"
-
-        # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, Scroll active worspace forward, workspace, e+1"
-        "$mainMod, mouse_up, Scroll active workspace backward, workspace, e-1"
-
-        # Move/resize windows with mainMod + LMB/RMB and dragging
-        "$mainMod, mouse:272, Move window, movewindow"
-        "$mainMod, mouse:273, Resize window, resizewindow"
+        "$mainMod, minus, resizeactive, -100 0"
+        "$mainMod, equal, resizeactive, 100 0"
+        "$mainMod SHIFT, minus, resizeactive, 0 -100"
+        "$mainMod SHIFT, equal, resizeactive, 0 100"
 
         # Workspace love
         "CTRL, left, workspace, e-1"
@@ -182,24 +174,29 @@
 
 
         # Application bindings
-        "$mainMod, return, Terminal, exec, kitty"
-        "$mainMod, F, File Manager, exec, thunar"
-        "$mainMod, B, Browser, exec, $browser"
-        "$mainMod, space, Launch apps, exec, wofi --show drun"
-        "$mainMod, M, Music, exec, spotify"
-        "$mainMod, N, Neovim, exec, $terminal -e nvim"
-        "$mainMod, O, Obsidian, exec, obsidian"
+        "$mainMod, return, exec, kitty"
+        "$mainMod, F, exec, thunar"
+        "$mainMod, B, exec, $browser"
+        "$mainMod, space, exec, wofi --show drun"
+        "$mainMod, M, exec, spotify"
+        "$mainMod, N, exec, $terminal -e nvim"
+        "$mainMod, O, exec, obsidian"
 
         # Web app bindings
-        "$mainMod, A, Claude, exec, $browser \"https://claude.ai/\""
-        "$mainMod, E, Email, exec, $browser \"https://mail.google.com/\""
-        "$mainMod, C, Calendar, exec, $browser \"https://calendar.google.com/\""
-        "$mainMod SHIFT, G, WhatsApp, exec, $browser \"https://web.whatsapp.com/\""
-        "$mainMod ALT, G, Google Messages, exec, $browser \"https://messages.google.com/web/conversations/\""
+        "$mainMod, A, exec, $browser \"https://claude.ai/\""
+        "$mainMod, E, exec, $browser \"https://mail.google.com/\""
+        "$mainMod, C, exec, $browser \"https://calendar.google.com/\""
+        "$mainMod SHIFT, G, exec, $browser \"https://web.whatsapp.com/\""
+        "$mainMod ALT, G, exec, $browser \"https://messages.google.com/web/conversations/\""
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = [
+        # Scroll through existing workspaces with mainMod + scroll
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+
+        # Move/resize windows with mainMod + LMB/RMB and dragging
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
