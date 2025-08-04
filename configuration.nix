@@ -87,12 +87,7 @@
     ghostty
     spotify
     #synergy
-    #deskflow
-    (pkgs.writeShellScriptBin "deskflow" ''
-    export GDK_BACKEND=x11
-    export QT_QPA_PLATFORM=xcb
-    exec ${pkgs.deskflow}/bin/deskflow "$@"
-    '')
+    deskflow
     dropbox
     obsidian
 
@@ -140,16 +135,18 @@
   };
 
   # Deskflow service
-  systemd.user.services.deskflow-server = {
-    description = "Deskflow Server";
+  systemd.user.services.deskflow-gui = {
+    description = "Deskflow GUI";
     wantedBy = [ "graphical-session.target" ];
     environment = {
+      WAYLAND_DISPLAY = "";
       GDK_BACKEND = "x11";
       QT_QPA_PLATFORM = "xcb";
+      XDG_SESSION_TYPE = "x11";
       DISPLAY = ":0";
     };
     serviceConfig = {
-      ExecStart = "${pkgs.deskflow}/bin/deskflow-server";
+      ExecStart = "${pkgs.deskflow}/bin/deskflow";
       Restart = "always";
       RestartSec = "5";
     };
