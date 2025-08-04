@@ -98,6 +98,14 @@
     export XDG_SESSION_TYPE=x11
     exec ${pkgs.deskflow}/bin/deskflow "$@"
     '')
+    (pkgs.makeDesktopItem {
+      name = "deskflow";
+      desktopName = "Deskflow";
+      exec = "deskflow";
+      icon = "deskflow";
+      comment = "Keyboard and mouse sharing utility";
+      categories = [ "Network" "Utility" ];
+    })
 
     # Hyprland essentials
     waybar          # Status bar
