@@ -54,7 +54,7 @@
         "${modifier}+e" = "exec firefox --new-window 'https://mail.google.com/'";
         "${modifier}+c" = "exec firefox --new-window 'https://calendar.google.com/'";
         "${modifier}+Shift+g" = "exec firefox --new-window 'https://web.whatsapp.com/'";
-        "${modifier}+Mod1+g" = "exec firefox --new-window 'https://messages.google.com/web/'";
+        "${modifier}+Alt+g" = "exec firefox --new-window 'https://messages.google.com/web/'";
         
         # Window management
         "${modifier}+w" = "kill";
