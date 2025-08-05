@@ -2,163 +2,67 @@
 
 {
   xsession.windowManager.i3 = {
-    enable = true;
-    config = {
-      # Modifier key (Super/Windows key)
-      modifier = "Mod4";
-      
-      # Terminal
-      terminal = "ghostty";
-      
-      # Application launcher
-      menu = "rofi -show drun";
-      
-      # Gaps configuration (similar to Hyprland)
-      gaps = {
-        inner = 5;
-        outer = 5;
+    # ... your existing config ...
+
+    # Enhanced gaps
+    gaps = {
+      inner = 8;    # Increased for better spacing
+      outer = 4;
+      smartGaps = true;  # Remove gaps when only one window
+    };
+
+    # Better window styling
+    window = {
+      border = 3;     # Slightly thicker border
+      titlebar = false;
+      hideEdgeBorders = "smart";  # Hide borders when only one window
+    };
+
+    # Enhanced colors with modern theme
+    colors = {
+      focused = {
+        border = "#33ccff";
+        background = "#33ccff";
+        text = "#1e1e2e";
+        indicator = "#a6e3a1";
+        childBorder = "#33ccff";
       };
-      
-      # Window configuration
-      window = {
-        border = 2;
-        titlebar = false;
+      focusedInactive = {
+        border = "#45475a";
+        background = "#45475a";
+        text = "#cdd6f4";
+        indicator = "#45475a";
+        childBorder = "#45475a";
       };
-      
-      # Startup applications
-      startup = [
-        { command = "nm-applet"; notification = false; }
-        { command = "dropbox start"; notification = false; }
-        { command = "picom"; notification = false; }  # Compositor
-        { command = "feh --bg-fill ~/.wallpaper.jpg"; notification = false; }  # Wallpaper
-        { command = "autotiling"; notification = false; }  # Automatic smart tiling
-      ];
-      
-      # Keybindings (adapted from your Hyprland config)
-      keybindings = let
-        modifier = config.xsession.windowManager.i3.config.modifier;
-      in {
-        # Terminal
-        "${modifier}+Return" = "exec ghostty";
-        
-        # Application shortcuts
-        "${modifier}+f" = "exec thunar";
-        "${modifier}+b" = "exec firefox";
-        "${modifier}+space" = "exec rofi -show drun";
-        "${modifier}+m" = "exec spotify";
-        "${modifier}+n" = "exec ghostty -e nvim";
-        "${modifier}+o" = "exec obsidian";
-        
-        # Web app bindings (adapted from your Hyprland config)
-        "${modifier}+a" = "exec firefox 'https://claude.ai/'";
-        "${modifier}+e" = "exec firefox 'https://mail.google.com/'";
-        "${modifier}+c" = "exec firefox 'https://calendar.google.com/'";
-        "${modifier}+Shift+g" = "exec firefox 'https://web.whatsapp.com/'";
-        "${modifier}+Mod1+g" = "exec firefox 'https://messages.google.com/web/conversations/'";
-        
-        # Window management
-        "${modifier}+w" = "kill";
-        "${modifier}+v" = "floating toggle";
-        
-        # Split controls (like Hyprland's behavior)
-        "${modifier}+h" = "split h";  # Split horizontally (new window to the right)
-        "${modifier}+j" = "split v";  # Split vertically (new window below)
-        "${modifier}+t" = "split toggle";  # Toggle split direction
-        
-        # Layout modes
-        "${modifier}+s" = "layout stacking";   # Stack windows vertically
-        "${modifier}+Tab" = "layout tabbed";   # Tab layout
-        "${modifier}+d" = "layout default";   # Default tiling
-        "${modifier}+p" = "layout toggle split"; # Toggle between h/v splits
-        
-        # Focus movement
-        "${modifier}+Left" = "focus left";
-        "${modifier}+Down" = "focus down";
-        "${modifier}+Up" = "focus up";
-        "${modifier}+Right" = "focus right";
-        
-        # Move windows
-        "${modifier}+Shift+Left" = "move left";
-        "${modifier}+Shift+Down" = "move down";
-        "${modifier}+Shift+Up" = "move up";
-        "${modifier}+Shift+Right" = "move right";
-        
-        # Workspaces
-        "${modifier}+1" = "workspace number 1";
-        "${modifier}+2" = "workspace number 2";
-        "${modifier}+3" = "workspace number 3";
-        "${modifier}+4" = "workspace number 4";
-        "${modifier}+5" = "workspace number 5";
-        "${modifier}+6" = "workspace number 6";
-        "${modifier}+7" = "workspace number 7";
-        "${modifier}+8" = "workspace number 8";
-        "${modifier}+9" = "workspace number 9";
-        "${modifier}+0" = "workspace number 10";
-        
-        # Move to workspaces
-        "${modifier}+Shift+1" = "move container to workspace number 1";
-        "${modifier}+Shift+2" = "move container to workspace number 2";
-        "${modifier}+Shift+3" = "move container to workspace number 3";
-        "${modifier}+Shift+4" = "move container to workspace number 4";
-        "${modifier}+Shift+5" = "move container to workspace number 5";
-        "${modifier}+Shift+6" = "move container to workspace number 6";
-        "${modifier}+Shift+7" = "move container to workspace number 7";
-        "${modifier}+Shift+8" = "move container to workspace number 8";
-        "${modifier}+Shift+9" = "move container to workspace number 9";
-        "${modifier}+Shift+0" = "move container to workspace number 10";
-        
-        # Workspace navigation
-        "Ctrl+Left" = "workspace prev";
-        "Ctrl+Right" = "workspace next";
-        
-        # Resize windows
-        "${modifier}+minus" = "resize shrink width 100px";
-        "${modifier}+equal" = "resize grow width 100px";
-        "${modifier}+Shift+minus" = "resize shrink height 100px";
-        "${modifier}+Shift+equal" = "resize grow height 100px";
-        
-        # Screenshots (using scrot instead of grim/slurp)
-        "Print" = "exec scrot -s ~/Pictures/screenshot_%Y-%m-%d_%H-%M-%S.png";
-        "Shift+Print" = "exec scrot ~/Pictures/screenshot_%Y-%m-%d_%H-%M-%S.png";
-        
-        # Audio controls
-        "XF86AudioRaiseVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-        "XF86AudioLowerVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-        "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-        
-        # Brightness controls
-        "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
-        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
-        
-        # System
-        "${modifier}+Shift+r" = "restart";
-        "${modifier}+Shift+e" = "exec i3-msg exit";
+      unfocused = {
+        border = "#313244";
+        background = "#313244";
+        text = "#cdd6f4";
+        indicator = "#313244";
+        childBorder = "#313244";
       };
-      
-      # Window rules
-      floating.criteria = [
-        { class = "Pavucontrol"; }
-        { class = "Nm-connection-editor"; }
-      ];
-      
-      # Colors (similar to your Hyprland theme)
-      colors = {
-        focused = {
-          border = "#33ccff";
-          background = "#33ccff";
-          text = "#ffffff";
-          indicator = "#00ff99";
-          childBorder = "#33ccff";
-        };
-        unfocused = {
-          border = "#595959";
-          background = "#595959";
-          text = "#ffffff";
-          indicator = "#595959";
-          childBorder = "#595959";
-        };
+      urgent = {
+        border = "#f38ba8";
+        background = "#f38ba8";
+        text = "#1e1e2e";
+        indicator = "#f38ba8";
+        childBorder = "#f38ba8";
       };
     };
+
+    # Enhanced startup with better wallpaper management
+    startup = [
+      { command = "nm-applet"; notification = false; }
+      { command = "dropbox start"; notification = false; }
+      { command = "picom"; notification = false; }
+      { command = "autotiling"; notification = false; }
+
+      # Better wallpaper setup - nitrogen is more reliable than feh
+      { command = "nitrogen --restore"; notification = false; }
+
+      # Set GTK theme
+      { command = "lxappearance"; notification = false; always = false; }
+    ];
   };
 
   # Polybar configuration (replaces waybar)
@@ -167,66 +71,202 @@
     script = "polybar main &";
     config = {
       "bar/main" = {
+        # Position at top instead of bottom
+        bottom = false;  # This moves it to the top
+
         width = "100%";
-        height = 30;
-        background = "#1e1e2e";
+        height = 35;  # Slightly taller for better look
+
+        # Enhanced colors with transparency
+        background = "#cc1e1e2e";  # Semi-transparent dark background
         foreground = "#cdd6f4";
-        
-        modules-left = "i3";
+
+        # Rounded corners and borders
+        radius = 8;
+        border-size = 2;
+        border-color = "#33ccff";
+
+        # Padding and margins
+        padding-left = 2;
+        padding-right = 2;
+        module-margin = 1;
+
+        modules-left = "i3 title";
         modules-center = "date";
-        modules-right = "pulseaudio battery";
-        
-        font-0 = "GeistMono Nerd Font:size=10;2";
+        modules-right = "filesystem pulseaudio battery network";
+
+        # Better font setup
+        font-0 = "GeistMono Nerd Font:size=11:weight=medium;3";
+        font-1 = "GeistMono Nerd Font:size=14;3";  # For icons
+
+        # Tray configuration
+        tray-position = "right";
+        tray-padding = 2;
+        tray-background = "#33ccff";
       };
-      
       "module/i3" = {
         type = "internal/i3";
         format = "<label-state> <label-mode>";
-        
-        label-focused = "%name%";
-        label-focused-background = "#fab387";
+
+        # Focused workspace
+        label-focused = " %name% ";
+        label-focused-background = "#33ccff";
         label-focused-foreground = "#1e1e2e";
-        label-focused-padding = 2;
-        
-        label-unfocused = "%name%";
-        label-unfocused-padding = 2;
+        label-focused-padding = 1;
+        label-focused-font = 1;
+
+        # Unfocused workspace
+        label-unfocused = " %name% ";
+        label-unfocused-background = "#45475a";
+        label-unfocused-foreground = "#cdd6f4";
+        label-unfocused-padding = 1;
+
+        # Urgent workspace
+        label-urgent = " %name% ";
+        label-urgent-background = "#f38ba8";
+        label-urgent-foreground = "#1e1e2e";
+        label-urgent-padding = 1;
       };
-      
+
+      # Window title module
+      "module/title" = {
+        type = "internal/xwindow";
+        format = "<label>";
+        label = "%title%";
+        label-maxlen = 50;
+        label-foreground = "#cdd6f4";
+      };
+
       "module/date" = {
         type = "internal/date";
         interval = 1;
-        date = "%Y-%m-%d";
+        date = "%a %b %d";
         time = "%H:%M:%S";
-        label = "%date% %time%";
+        label = "  %date%   %time% ";
+        format-background = "#313244";
+        format-padding = 2;
       };
-      
+
       "module/pulseaudio" = {
         type = "internal/pulseaudio";
         format-volume = "<ramp-volume> <label-volume>";
-        label-muted = "🔇 muted";
-        ramp-volume-0 = "🔈";
-        ramp-volume-1 = "🔉";
-        ramp-volume-2 = "🔊";
+        format-volume-background = "#313244";
+        format-volume-padding = 2;
+
+        label-muted = "  muted";
+        label-muted-background = "#f38ba8";
+        label-muted-foreground = "#1e1e2e";
+        label-muted-padding = 2;
+
+        ramp-volume-0 = " ";
+        ramp-volume-1 = " ";
+        ramp-volume-2 = " ";
       };
-      
+
       "module/battery" = {
         type = "internal/battery";
-        battery = "BAT0";  # Adjust if needed
-        adapter = "ADP1";   # Adjust if needed
-        format-charging = "🔌 <label-charging>";
-        format-discharging = "🔋 <label-discharging>";
-        label-charging = "%percentage%%";
-        label-discharging = "%percentage%%";
+        battery = "BAT0";
+        adapter = "ADP1";
+
+        format-charging = "  <label-charging>";
+        format-charging-background = "#a6e3a1";
+        format-charging-foreground = "#1e1e2e";
+        format-charging-padding = 2;
+
+        format-discharging = "<ramp-capacity> <label-discharging>";
+        format-discharging-background = "#313244";
+        format-discharging-padding = 2;
+
+        ramp-capacity-0 = " ";
+        ramp-capacity-1 = " ";
+        ramp-capacity-2 = " ";
+        ramp-capacity-3 = " ";
+        ramp-capacity-4 = " ";
+      };
+
+      "module/network" = {
+        type = "internal/network";
+        interface = "wlan0";  # Adjust to your interface
+
+        format-connected = "  <label-connected>";
+        format-connected-background = "#313244";
+        format-connected-padding = 2;
+        label-connected = "%essid%";
+
+        format-disconnected = "  disconnected";
+        format-disconnected-background = "#f38ba8";
+        format-disconnected-foreground = "#1e1e2e";
+        format-disconnected-padding = 2;
+      };
+
+      "module/filesystem" = {
+        type = "internal/fs";
+        mount-0 = "/";
+
+        format-mounted = "  <label-mounted>";
+        format-mounted-background = "#313244";
+        format-mounted-padding = 2;
+        label-mounted = "%percentage_used%%";
       };
     };
   };
-  
+
   # Picom compositor configuration (for transparency and effects)
   services.picom = {
     enable = true;
+
+    # Fading
     fade = true;
-    fadeDelta = 4;
+    fadeDelta = 8;
+    fadeSteps = [ 0.028 0.03 ];
+
+    # Shadows
     shadow = true;
-    shadowOpacity = 0.75;
+    shadowOpacity = 0.6;
+    shadowRadius = 12;
+    shadowOffsets = [ (-7) (-7) ];
+    shadowExclude = [
+      "class_g = 'i3-frame'"
+      "class_g ?= 'Notify-osd'"
+      "class_g = 'Cairo-clock'"
+    ];
+
+    # Transparency/Opacity
+    activeOpacity = 1.0;
+    inactiveOpacity = 0.95;
+    menuOpacity = 0.9;
+
+    # Background blurring (optional - can be performance intensive)
+    blur = {
+      method = "gaussian";
+      size = 10;
+      deviation = 5.0;
+    };
+
+    # Rounded corners
+    cornerRadius = 8;
+    roundedCornersExclude = [
+      "window_type = 'dock'"
+      "window_type = 'desktop'"
+    ];
+
+    # Other settings
+    backend = "glx";
+    vsync = true;
+    markWmwinFocused = true;
+    markOvrdrWmwin = true;
+    detectRounded = true;
+    detectClient = true;
+    refreshRate = 0;
+    unredir = false;
+
+    # Window type settings
+    wintypes = {
+      tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; };
+      dock = { shadow = false; };
+      dnd = { shadow = false; };
+      popup_menu = { opacity = 0.9; };
+      dropdown_menu = { opacity = 0.9; };
+    };
   };
 }

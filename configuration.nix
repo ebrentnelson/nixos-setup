@@ -82,7 +82,10 @@
     # i3-specific utilities
     rofi           # Better application launcher than dmenu
     polybar        # More modern status bar
-    feh            # Image viewer and wallpaper setter
+    nitrogen            # Image viewer and wallpaper setter
+    lxappearance   # GTK theme manager
+    arc-theme      # Nice dark theme
+    papirus-icon-theme  # Clean icon theme
     scrot          # Screenshot utility
     xclip          # Clipboard utilities
     picom          # Compositor for transparency/effects
@@ -92,6 +95,7 @@
     pavucontrol    # Audio control
     brightnessctl  # Brightness control (for laptops)
     arandr         # GUI for xrandr (monitor configuration)
+    imagemagick
   ];
 
   # Fonts
