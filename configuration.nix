@@ -88,6 +88,7 @@
     spotify
     dropbox
     obsidian
+    synergy
 
     # Hyprland essentials
     waybar          # Status bar
