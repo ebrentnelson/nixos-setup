@@ -35,7 +35,7 @@
   # Zsh configuration (since you use zsh as your shell)
   programs.zsh = {
     enable = true;
-    ohMyZsh = {
+    oh-my-zsh = {
       enable = true;
       plugins = [
         "git"
