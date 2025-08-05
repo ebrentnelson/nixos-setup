@@ -40,19 +40,6 @@
     # withUWSM = true;
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      xdg-desktop-portal-hyprland = prev.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
-        src = prev.fetchFromGitHub {
-          owner = "3l0w";
-          repo = "xdg-desktop-portal-hyprland";
-          rev = "feat/input-capture-impl";
-          sha256 = "0000000000000000000000000000000000000000000000000000";  # Will need to update
-        };
-      });
-    })
-  ];
-
   # XDG portal for screen sharing and file dialogs
   xdg.portal = {
     enable = true;
