@@ -41,7 +41,7 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      background-opacity = "0.85";  # 0.0 = fully transparent, 1.0 = fully opaque
+      background-opacity = "0.95";  # 0.0 = fully transparent, 1.0 = fully opaque
       font-family = "GeistMono Nerd Font";
       font-size = 12;
     };
