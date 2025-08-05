@@ -82,10 +82,7 @@
     # i3-specific utilities
     rofi           # Better application launcher than dmenu
     polybar        # More modern status bar
-    nitrogen            # Image viewer and wallpaper setter
-    lxappearance   # GTK theme manager
-    arc-theme      # Nice dark theme
-    papirus-icon-theme  # Clean icon theme
+    variety
     scrot          # Screenshot utility
     xclip          # Clipboard utilities
     picom          # Compositor for transparency/effects
