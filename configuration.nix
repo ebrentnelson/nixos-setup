@@ -1,4 +1,4 @@
-# /etc/nixos/configuration.nix
+# /etc/nixos/configuration.nix - i3 tiling window manager
 { config, pkgs, ... }:
 
 {
@@ -24,31 +24,20 @@
   time.timeZone = "America/Boise";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable the X11 windowing system and Wayland
+  # Enable X11 with i3
   services.xserver = {
     enable = true;
-    displayManager.gdm = {
+    displayManager.lightdm.enable = true;
+    windowManager.i3 = {
       enable = true;
-      wayland = true;
+      extraPackages = with pkgs; [
+        dmenu      # Application launcher
+        i3status   # Status bar
+        i3lock     # Screen locker
+        i3blocks   # Alternative status bar
+      ];
     };
   };
-
-  # Hyprland configuration
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    # withUWSM = true;
-  };
-
-  # XDG portal for screen sharing and file dialogs
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
-    ];
-  };
-  services.dbus.enable = true;
 
   # Audio
   security.rtkit.enable = true;
@@ -88,32 +77,22 @@
     spotify
     dropbox
     obsidian
-    deskflow
+    synergy
 
-    # Hyprland essentials
-    waybar          # Status bar
-    wofi           # Application launcher
-    wl-clipboard   # Clipboard utilities
-    grim           # Screenshot utility
-    slurp          # Screen area selection
-    mako           # Notification daemon
-    vanilla-dmz    # Sane cursor
+    # i3-specific utilities
+    rofi           # Better application launcher than dmenu
+    polybar        # More modern status bar
+    feh            # Image viewer and wallpaper setter
+    scrot          # Screenshot utility
+    xclip          # Clipboard utilities
+    picom          # Compositor for transparency/effects
 
     # System utilities
     networkmanagerapplet
     pavucontrol    # Audio control
     brightnessctl  # Brightness control (for laptops)
-
-    # Terminal
-    #kitty          # Alternative terminal (you have ghostty too)
+    arandr         # GUI for xrandr (monitor configuration)
   ];
-
-  environment.variables = {
-    XCURSOR_THEME = "Vanilla-DMZ";
-    XCURSOR_SIZE = "24";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-  };
 
   # Fonts
   fonts.packages = with pkgs; [

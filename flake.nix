@@ -24,6 +24,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            backupFileExtension = "backup";
             users.ebn = import ./users/ebn/home.nix;
           };
         }

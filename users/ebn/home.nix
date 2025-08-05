@@ -2,9 +2,11 @@
 
 {
   imports = [
-    ./hyprland.nix
+    # Remove hyprland.nix import since we're switching to X11
+    # ./hyprland.nix
     ./neovim.nix
     ./starship.nix
+    ./i3.nix  # New i3 configuration (if using i3)
   ];
 
   # Home Manager needs a bit of information about you and the paths it should manage
@@ -20,6 +22,7 @@
   home.packages = with pkgs; [
     # Add any user-specific packages here
     # For example: personal scripts, user-only tools, etc.
+    autotiling # i3 specific
   ];
 
   # Git configuration (optional - you can configure this here)
