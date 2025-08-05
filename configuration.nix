@@ -82,7 +82,7 @@
     # i3-specific utilities
     rofi           # Better application launcher than dmenu
     polybar        # More modern status bar
-    variety
+    feh 
     scrot          # Screenshot utility
     xclip          # Clipboard utilities
     picom          # Compositor for transparency/effects

@@ -30,7 +30,7 @@
         { command = "nm-applet"; notification = false; }
         { command = "dropbox start"; notification = false; }
         { command = "picom"; notification = false; }  # Compositor
-        { command = "variety"; notification = false; }  # Wallpaper
+        { command = "feh --bg-fill --randomize ~/.config/wallpapers/*"; notification = false; }  # Wallpaper
         { command = "autotiling"; notification = false; }  # Automatic smart tiling
       ];
       
