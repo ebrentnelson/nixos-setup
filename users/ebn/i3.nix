@@ -7,9 +7,6 @@
       # Modifier key (Super/Windows key)
       modifier = "Mod4";
       
-      # Terminal
-      terminal = "ghostty";
-      
       # Application launcher
       menu = "rofi -show drun";
       
@@ -37,24 +34,27 @@
       # Keybindings (adapted from your Hyprland config)
       keybindings = let
         modifier = config.xsession.windowManager.i3.config.modifier;
+        terminal = "ghostty";
+        browser = "chromium --new-window --ozone-platform=x11";
+        webapp = "${browser} --app";
       in {
         # Terminal
-        "${modifier}+Return" = "exec ghostty";
+        "${modifier}+Return" = "exec ${terminal}";
         
         # Application shortcuts
         "${modifier}+f" = "exec thunar";
-        "${modifier}+b" = "exec firefox";
+        "${modifier}+b" = "exec ${browser}";
         "${modifier}+space" = "exec rofi -show drun";
         "${modifier}+m" = "exec spotify";
-        "${modifier}+n" = "exec ghostty -e nvim";
+        "${modifier}+n" = "exec ${terminal} -e nvim";
         "${modifier}+o" = "exec obsidian";
         
         # Web app bindings (adapted from your Hyprland config)
-        "${modifier}+a" = "exec firefox --new-window 'https://claude.ai/'";
-        "${modifier}+e" = "exec firefox --new-window 'https://mail.google.com/'";
-        "${modifier}+c" = "exec firefox --new-window 'https://calendar.google.com/'";
-        "${modifier}+Shift+g" = "exec firefox --new-window 'https://web.whatsapp.com/'";
-        "${modifier}+Shift+h" = "exec firefox --new-window 'https://messages.google.com/web/'";
+        "${modifier}+a" = "exec ${webapp}='https://claude.ai/'}";
+        "${modifier}+e" = "exec ${webapp}='https://mail.google.com/'";
+        "${modifier}+c" = "exec ${webapp}='https://calendar.google.com/'";
+        "${modifier}+Shift+g" = "exec ${webapp}='https://web.whatsapp.com/'";
+        "${modifier}+Shift+h" = "exec ${webapp}='https://messages.google.com/web/'";
         
         # Window management
         "${modifier}+w" = "kill";

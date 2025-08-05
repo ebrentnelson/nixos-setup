@@ -72,7 +72,7 @@
     silver-searcher # ag
 
     # Applications
-    google-chrome
+    chromium
     firefox
     ghostty
     spotify
