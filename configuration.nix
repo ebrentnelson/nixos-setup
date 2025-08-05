@@ -40,19 +40,21 @@
   };
 
   # Audio
+  sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 
   # User account
   users.users.ebn = {
     isNormalUser = true;
     description = "E Brent Nelson";
-    extraGroups = [ "networkmanager" "wheel" "input"];
+    extraGroups = [ "networkmanager" "wheel" "input" "audio"];
     shell = pkgs.zsh;
   };
 
@@ -89,7 +91,9 @@
 
     # System utilities
     networkmanagerapplet
+    alsa-utils
     pavucontrol    # Audio control
+    pulseaudio
     brightnessctl  # Brightness control (for laptops)
     arandr         # GUI for xrandr (monitor configuration)
     imagemagick
