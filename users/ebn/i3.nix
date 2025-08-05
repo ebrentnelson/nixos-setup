@@ -211,14 +211,12 @@
     };
   };
 
-  # Picom compositor configuration (for transparency and effects)
   services.picom = {
     enable = true;
 
     # Fading
     fade = true;
     fadeDelta = 8;
-    fadeSteps = [ 0.028 0.03 ];
 
     # Shadows
     shadow = true;
@@ -234,39 +232,36 @@
     # Transparency/Opacity
     activeOpacity = 1.0;
     inactiveOpacity = 0.95;
-    menuOpacity = 0.9;
 
-    # Background blurring (optional - can be performance intensive)
-    blur = {
-      method = "gaussian";
-      size = 10;
-      deviation = 5.0;
-    };
-
-    # Rounded corners
-    cornerRadius = 8;
-    roundedCornersExclude = [
-      "window_type = 'dock'"
-      "window_type = 'desktop'"
-    ];
-
-    # Other settings
+    # Backend and performance
     backend = "glx";
-    vsync = true;
-    markWmwinFocused = true;
-    markOvrdrWmwin = true;
-    detectRounded = true;
-    detectClient = true;
-    refreshRate = 0;
-    unredir = false;
+    vSync = true;
 
-    # Window type settings
-    wintypes = {
-      tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; };
-      dock = { shadow = false; };
-      dnd = { shadow = false; };
-      popup_menu = { opacity = 0.9; };
-      dropdown_menu = { opacity = 0.9; };
+    # Additional settings for better visuals
+    settings = {
+      # Rounded corners
+      corner-radius = 8;
+      rounded-corners-exclude = [
+        "window_type = 'dock'"
+        "window_type = 'desktop'"
+      ];
+
+      # Window type specific settings
+      wintypes = {
+        tooltip = { fade = true; shadow = true; opacity = 0.75; focus = true; };
+        dock = { shadow = false; };
+        dnd = { shadow = false; };
+        popup_menu = { opacity = 0.9; };
+        dropdown_menu = { opacity = 0.9; };
+      };
+
+      # Performance optimizations
+      mark-wmwin-focused = true;
+      mark-ovredir-focused = true;
+      detect-rounded-corners = true;
+      detect-client-opacity = true;
+      refresh-rate = 0;
+      unredir-if-possible = false;
     };
   };
 }
