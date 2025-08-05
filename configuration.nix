@@ -40,15 +40,28 @@
     # withUWSM = true;
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      xdg-desktop-portal-hyprland = prev.xdg-desktop-portal-hyprland.overrideAttrs (oldAttrs: {
+        src = prev.fetchFromGitHub {
+          owner = "3l0w";
+          repo = "xdg-desktop-portal-hyprland";
+          rev = "feat/input-capture-impl";
+          sha256 = "0000000000000000000000000000000000000000000000000000";  # Will need to update
+        };
+      });
+    })
+  ];
+
   # XDG portal for screen sharing and file dialogs
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
     ];
   };
+  services.dbus.enable = true;
 
   # Audio
   security.rtkit.enable = true;
@@ -63,7 +76,7 @@
   users.users.ebn = {
     isNormalUser = true;
     description = "E Brent Nelson";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input"];
     shell = pkgs.zsh;
   };
 
@@ -111,6 +124,8 @@
   environment.variables = {
     XCURSOR_THEME = "Vanilla-DMZ";
     XCURSOR_SIZE = "24";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "Hyprland";
   };
 
   # Fonts
