@@ -88,7 +88,7 @@
     spotify
     dropbox
     obsidian
-    input-leap
+    deskflow
 
     # Hyprland essentials
     waybar          # Status bar
