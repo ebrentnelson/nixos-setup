@@ -35,7 +35,15 @@
   # Zsh configuration (since you use zsh as your shell)
   programs.zsh = {
     enable = true;
-    # Add any zsh-specific configuration here
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "history-substring-search"
+        "sudo"
+      ];
+      theme = "robbyrussell";
+    };
   };
 
   programs.ghostty = {
