@@ -25,6 +25,12 @@
     autotiling # i3 specific
   ];
 
+  home.pointerCursor = {
+    name = "capitaine-cursors";
+    package = pkgs.capitaine-cursors;
+    size = 16;
+  };
+
   # Git configuration (optional - you can configure this here)
   programs.git = {
     enable = true;
