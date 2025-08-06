@@ -56,7 +56,7 @@
         "${modifier}+o" = "exec obsidian";
         
         # Web app bindings (adapted from your Hyprland config)
-        "${modifier}+a" = "exec ${webapp}='https://claude.ai/new'}";
+        "${modifier}+a" = "exec ${webapp}='https://claude.ai/new/'";
         "${modifier}+e" = "exec ${webapp}='https://mail.google.com/'";
         "${modifier}+c" = "exec ${webapp}='https://calendar.google.com/'";
         "${modifier}+Shift+g" = "exec ${webapp}='https://web.whatsapp.com/'";

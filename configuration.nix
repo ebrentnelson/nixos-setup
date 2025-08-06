@@ -98,6 +98,10 @@
     imagemagick
   ];
 
+  environment.variables = {
+    TERMINAL = "ghostty";
+  };
+
   # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.geist-mono
