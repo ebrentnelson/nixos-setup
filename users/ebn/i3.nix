@@ -20,6 +20,12 @@
       window = {
         border = 4;
         titlebar = false;
+        commands = [
+          {
+            criteria = { class = "com.mitchellh.ghostty"; };
+            command = "border pixel 4";
+          }
+        ];
       };
       
       # Startup applications

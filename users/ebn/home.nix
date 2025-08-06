@@ -58,6 +58,7 @@
       background-opacity = "0.95";  # 0.0 = fully transparent, 1.0 = fully opaque
       font-family = "GeistMono Nerd Font";
       font-size = 12;
+      window-decoration = false;
     };
   };
 
