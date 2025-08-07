@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/common.nix
     ../../modules/desktop/hyprland.nix
-    ../../users/ebn.nix
+    ../../modules/users/ebn.nix
   ];
 
   networking.hostName = "zeezrom";
