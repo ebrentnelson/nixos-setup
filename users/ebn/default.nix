@@ -1,12 +1,12 @@
-{ config, pkgs, lib, ... }:
+{ desktop }: { config, pkgs, lib, ... }:
 
 {
   imports = [
     ./modules/neovim.nix
     ./modules/starship.nix
-  ] ++ lib.optionals config.services.xserver.windowManager.i3.enable [
+  ] ++ lib.optionals (desktop == "i3") [
       ./modules/i3.nix 
-    ] ++ lib.optionals config.wayland.windowManager.hyprland.enable [
+    ] ++ lib.optionals (desktop == "hyprland") [
       ./modules/hyprland.nix
     ];
 
@@ -15,7 +15,7 @@
   home.stateVersion = "25.05";
 
   home.packages = with pkgs; []
-    ++ lib.optionals config.services.xserver.windowManager.i3.enable [
+    ++ lib.optionals (desktop == "i3") [
       autotiling 
     ];
 

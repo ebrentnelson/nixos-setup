@@ -23,7 +23,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              users.ebn = import ./users/ebn;
+              users.ebn = import ./users/ebn { desktop = "i3"; };
             };
           }
         ];
@@ -40,7 +40,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              users.ebn = import ./users/ebn;
+              users.ebn = import ./users/ebn { desktop = "hyprland"; };
             };
           }
         ];
