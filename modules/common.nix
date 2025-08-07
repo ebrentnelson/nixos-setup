@@ -49,7 +49,6 @@
     networkmanagerapplet
     alsa-utils
     pavucontrol  
-    pulseaudio
     brightnessctl 
     imagemagick
   ];
