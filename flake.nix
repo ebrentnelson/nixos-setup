@@ -9,26 +9,42 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-  let
-    hostname = "moroni";  # Change this one line to rename the host
-  in {
-    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        /etc/nixos/hardware-configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          networking.hostName = hostname;
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "backup";
-            users.ebn = import ./users/ebn/home.nix;
-          };
-        }
-      ];
+  outputs = { nixpkgs, home-manager, ... }: {
+    nixosConfigurations = {
+
+      # Moroni (Desktop NUC)
+      moroni = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/moroni
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.ebn = import ./users/ebn;
+            };
+          }
+        ];
+      };
+
+      # Zeezrom (Thinkpad T480)
+      zeezrom = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/zeezrom
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.ebn = import ./users/ebn;
+            };
+          }
+        ];
+      };
     };
   };
 }

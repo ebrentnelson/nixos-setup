@@ -176,7 +176,7 @@
       nil  # Nix LSP
       nodePackages.typescript-language-server
       rust-analyzer
-      
+
       # Additional tools
       ripgrep  # For telescope grep
       fd       # For telescope file search
