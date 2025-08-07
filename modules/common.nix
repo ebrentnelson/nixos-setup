@@ -45,12 +45,12 @@
     spotify
     dropbox
     obsidian
-    synergy
     networkmanagerapplet
     alsa-utils
     pavucontrol  
     brightnessctl 
     imagemagick
+    gnumake
   ];
 
   environment.variables = {

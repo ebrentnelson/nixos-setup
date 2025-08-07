@@ -17,12 +17,13 @@
 
   # i3-specific system packages
   environment.systemPackages = with pkgs; [
-     rofi
-     polybar
-     feh 
-     scrot 
-     xclip
-     picom
-     arandr 
+    rofi
+    polybar
+    feh 
+    scrot 
+    xclip
+    picom
+    arandr 
+    synergy
   ];
 }
