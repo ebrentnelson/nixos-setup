@@ -79,6 +79,9 @@
       
       -- Set colorscheme
       vim.cmd("colorscheme gruvbox")
+      vim.g.gruvbox_transparent_bg = 1
+      vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
+      vim.cmd("highlight NonText guibg=NONE ctermbg=NONE")
       
       -- Leader key
       vim.g.mapleader = " "
@@ -173,7 +176,7 @@
       nil  # Nix LSP
       nodePackages.typescript-language-server
       rust-analyzer
-      
+
       # Additional tools
       ripgrep  # For telescope grep
       fd       # For telescope file search
