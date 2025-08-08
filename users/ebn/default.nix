@@ -4,6 +4,7 @@
   imports = [
     ./modules/neovim.nix
     ./modules/starship.nix
+    ./modules/ghostty.nix
   ] ++ lib.optionals (desktop == "i3") [
       ./modules/i3.nix 
     ] ++ lib.optionals (desktop == "hyprland") [
@@ -41,16 +42,6 @@
         "sudo"
       ];
       theme = "robbyrussell";
-    };
-  };
-
-  programs.ghostty = {
-    enable = true;
-    settings = {
-      background-opacity = "0.95";  
-      font-family = "GeistMono Nerd Font";
-      font-size = 12;
-      window-decoration = false;
     };
   };
 
