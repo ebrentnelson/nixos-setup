@@ -12,7 +12,7 @@
   outputs = { nixpkgs, home-manager, ... }: {
     homeConfigurations = {
       ebn = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Change to x86_64-darwin for macOS
+        pkgs = nixpkgs.legacyPackages.${builtins.currentSystem}; 
         modules = [ ./home.nix ];
       };
     };
