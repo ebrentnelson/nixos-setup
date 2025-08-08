@@ -35,6 +35,9 @@
         { command = "picom"; notification = false; }  # Compositor
         { command = "feh --bg-fill --randomize ~/.config/wallpapers/*"; notification = false; }  # Wallpaper
         { command = "autotiling"; notification = false; }  # Automatic smart tiling
+        { command = "xset s off"; notification = false; }  # Disable screensaver
+        { command = "xset -dpms"; notification = false; }  # Disable DPMS
+        { command = "xset s noblank"; notification = false; } # Disable screen blanking 
       ];
       
       # Keybindings (adapted from your Hyprland config)
