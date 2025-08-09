@@ -7,13 +7,21 @@
     enable = true;
     
     theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
+      name = "Catppuccin-Mocha-Standard-Blue-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "blue" ];
+        size = "standard";
+        tweaks = [ "rimless" ];
+        variant = "mocha";
+      };
     };
     
     iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders.override {
+        flavor = "mocha";
+        accent = "blue";
+      };
     };
     
     font = {
