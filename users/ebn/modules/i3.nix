@@ -64,6 +64,9 @@
         "${modifier}+c" = "exec ${webapp}='https://calendar.google.com/'";
         "${modifier}+Shift+g" = "exec ${webapp}='https://web.whatsapp.com/'";
         "${modifier}+Shift+h" = "exec ${webapp}='https://messages.google.com/web/'";
+
+        # Change wallpaper manually  
+        "${modifier}+comma" = "exec systemctl --user start random-wallpaper.service";
         
         # Window management
         "${modifier}+w" = "kill";

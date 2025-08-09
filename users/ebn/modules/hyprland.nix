@@ -190,6 +190,9 @@
         "$mainMod, C, exec, $webapp='https://calendar.google.com/'"
         "$mainMod SHIFT, G, exec, $webapp='https://web.whatsapp.com/'"
         "$mainMod SHIFT, H, exec, $webapp='https://messages.google.com/web/'"
+
+        # Wallpaper changing
+        "$mainMod, comma, exec, systemctl --user start random-wallpaper.service"
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
