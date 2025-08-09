@@ -2,7 +2,7 @@
 
 let
   wallpaperScript = pkgs.writeShellScript "set-random-wallpaper" ''
-    WALLPAPER_DIR="$HOME/Dropbox/wallpapers"
+    WALLPAPER_DIR="$HOME/Dropbox/Wallpapers"
     
     if [ ! -d "$WALLPAPER_DIR" ]; then
       echo "Wallpaper directory $WALLPAPER_DIR not found"
