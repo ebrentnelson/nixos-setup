@@ -15,6 +15,9 @@
     };
   };
 
+  services.dbus.enable = true;
+  programs.dconf.enable = true;
+
   # i3-specific system packages
   environment.systemPackages = with pkgs; [
     rofi
@@ -25,5 +28,6 @@
     picom
     arandr 
     synergy
+    dconf
   ];
 }
