@@ -13,7 +13,7 @@
 
         modules-left = "xworkspaces";
         modules-center = "date";
-        modules-right = "network alsa powermenu";
+        modules-right = "tray network pulseaudio powermenu";
 
         font-0 = "GeistMono Nerd Font:size=13;2";
 
@@ -47,20 +47,21 @@
         label-connected = "%signal%%";
       };
 
-      "module/alsa" = {
-        type = "internal/alsa";
+      "module/pulseaudio" = {
+        type = "internal/pulseaudio";
         format-volume = " <ramp-volume> <label-volume> ";
         format-muted = " 󰝟 Muted ";
         ramp-volume-0 = "󰕿";
         ramp-volume-1 = "󰖀";
         ramp-volume-2 = "󰕾";
         click-right = "pavucontrol";
+        use-ui-max = false;
       };
 
       "module/powermenu" = {
         type = "custom/text";
         content = " 󰐥 ";
-        click-left = "rofi -show p -modi p:rofi-power-menu";
+        click-left = "rofi -show p -modi p:rofi-power-menu -theme ~/.config/rofi/theme.rasi";
       };
     };
   };

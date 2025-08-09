@@ -5,6 +5,7 @@
     ./modules/neovim.nix
     ./modules/starship.nix
     ./modules/ghostty.nix
+    ./modules/gtk.nix
   ] ++ lib.optionals (desktop == "i3") [
       ./modules/i3.nix 
       ./modules/polybar.nix
@@ -13,6 +14,7 @@
       ./modules/hyprland.nix
       ./modules/waybar.nix
       ./modules/wofi.nix
+      ./modules/wlogout.nix
     ];
 
   home.username = "ebn";
