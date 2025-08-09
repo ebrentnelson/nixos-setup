@@ -179,7 +179,7 @@
         "$mainMod, return, exec, $terminal"
         "$mainMod, F, exec, thunar"
         "$mainMod, B, exec, $browser"
-        "$mainMod, space, exec, wofi --show drun"
+        "$mainMod, space, exec, wofi"
         "$mainMod, M, exec, spotify"
         "$mainMod, N, exec, $terminal -e nvim"
         "$mainMod, O, exec, obsidian"

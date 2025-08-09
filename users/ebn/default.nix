@@ -11,6 +11,7 @@
     ] ++ lib.optionals (desktop == "hyprland") [
       ./modules/hyprland.nix
       ./modules/waybar.nix
+      ./modules/wofi.nix
     ];
 
   home.username = "ebn";
