@@ -94,7 +94,8 @@
       # Key bindings
       "$mainMod" = "SUPER";
       "$terminal" = "ghostty";
-      "$browser" = "MOZ_ENABLE_WAYLAND=1 firefox --new-window";
+      "$browser" = "chromium --new-window --ozone-platform=wayland";
+      "$webapp" = "$browser --app";
 
       # Basic bindings
       bind = [
@@ -183,11 +184,11 @@
         "$mainMod, O, exec, obsidian"
 
         # Web app bindings
-        "$mainMod, A, exec, $browser \"https://claude.ai/\""
-        "$mainMod, E, exec, $browser \"https://mail.google.com/\""
-        "$mainMod, C, exec, $browser \"https://calendar.google.com/\""
-        "$mainMod SHIFT, G, exec, $browser \"https://web.whatsapp.com/\""
-        "$mainMod ALT, G, exec, $browser \"https://messages.google.com/web/conversations/\""
+        "$mainMod, A, exec, $webapp='https://claude.ai/'"
+        "$mainMod, E, exec, $webapp='https://mail.google.com/'"
+        "$mainMod, C, exec, $webapp='https://calendar.google.com/'"
+        "$mainMod SHIFT, G, exec, $webapp='https://web.whatsapp.com/'"
+        "$mainMod SHIFT, H, exec, $webapp='https://messages.google.com/web/conversations/'"
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
