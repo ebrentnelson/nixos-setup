@@ -188,7 +188,7 @@
         "$mainMod, E, exec, $webapp='https://mail.google.com/'"
         "$mainMod, C, exec, $webapp='https://calendar.google.com/'"
         "$mainMod SHIFT, G, exec, $webapp='https://web.whatsapp.com/'"
-        "$mainMod SHIFT, H, exec, $webapp='https://messages.google.com/web/conversations/'"
+        "$mainMod SHIFT, H, exec, $webapp='https://messages.google.com/web/'"
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging
