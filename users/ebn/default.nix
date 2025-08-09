@@ -9,6 +9,7 @@
       ./modules/i3.nix 
     ] ++ lib.optionals (desktop == "hyprland") [
       ./modules/hyprland.nix
+      ./modules/waybar.nix
     ];
 
   home.username = "ebn";

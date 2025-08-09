@@ -20,5 +20,6 @@
     grim
     slurp
     wl-clipboard
+    wlogout
   ];
 }
