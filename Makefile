@@ -75,7 +75,7 @@ maintenance: update rebuild gc
 # Collect files for Claude project
 collect-for-claude:
 	@mkdir -p ./generated/claude
-	@find . -type f -not -path "*/.git/*" | while read file; do \
+	@find . -type f -not -path "*/.git/*" -not -path "*/generated/*" | while read file; do \
 		relative_path=$${file#./}; \
 		target_name=$$(echo "$$relative_path" | sed 's|/|_|g'); \
 		cp "$$file" "./generated/claude/$$target_name"; \
