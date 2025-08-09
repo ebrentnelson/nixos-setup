@@ -13,7 +13,7 @@
 
         modules-left = "xworkspaces";
         modules-center = "date";
-        modules-right = "tray network pulseaudio powermenu";
+        modules-right = "network alsa powermenu";
 
         font-0 = "GeistMono Nerd Font:size=13;2";
 
@@ -47,15 +47,14 @@
         label-connected = "%signal%%";
       };
 
-      "module/pulseaudio" = {
-        type = "internal/pulseaudio";
+      "module/alsa" = {
+        type = "internal/alsa";
         format-volume = " <ramp-volume> <label-volume> ";
         format-muted = " 󰝟 Muted ";
         ramp-volume-0 = "󰕿";
         ramp-volume-1 = "󰖀";
         ramp-volume-2 = "󰕾";
         click-right = "pavucontrol";
-        use-ui-max = false;
       };
 
       "module/powermenu" = {
