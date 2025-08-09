@@ -155,21 +155,34 @@
         { class = "Nm-connection-editor"; }
       ];
       
-      # Colors (similar to your Hyprland theme)
       colors = {
         focused = {
-          border = "#33ccff";
-          background = "#33ccff";
-          text = "#ffffff";
-          indicator = "#00ff99";
-          childBorder = "#33ccff";
+          border = "#fe386e";
+          background = "#111111";
+          text = "#f9f9f9";
+          indicator = "#fe386e";
+          childBorder = "#fe386e";
         };
         unfocused = {
-          border = "#595959";
-          background = "#595959";
+          border = "#333333";
+          background = "#1a1a1a";
+          text = "#888888";
+          indicator = "#333333";
+          childBorder = "#333333";
+        };
+        focusedInactive = {
+          border = "#444444";
+          background = "#222222";
+          text = "#cccccc";
+          indicator = "#444444";
+          childBorder = "#444444";
+        };
+        urgent = {
+          border = "#fe386e";
+          background = "#fe386e";
           text = "#ffffff";
-          indicator = "#595959";
-          childBorder = "#595959";
+          indicator = "#fe386e";
+          childBorder = "#fe386e";
         };
       };
     };
