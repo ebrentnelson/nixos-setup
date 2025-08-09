@@ -21,6 +21,7 @@
         "mako --default-timeout 5000"
         "nm-applet --indicator"
         "dropbox start"
+        "swww-daemon --format xrgb"
       ];
 
       # Environment variables
