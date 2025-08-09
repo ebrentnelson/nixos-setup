@@ -53,17 +53,20 @@
 
       # Decoration
       decoration = {
-        rounding = 5;
+        rounding = 8;
         blur = {
           enabled = true;
-          size = 3;
-          passes = 1;
+          size = 8;
+          passes = 2;
           vibrancy = 0.1696;
+          ignore_opacity = true;
         };
         drop_shadow = true;
-        shadow_range = 4;
+        shadow_range = 12;
         shadow_render_power = 3;
+        shadow_offset = "-15 -15";
         "col.shadow" = "rgba(1a1a1aee)";
+        "col.shadow_inactive" = "rgba(1a1a1a88)";
       };
 
       # Animations

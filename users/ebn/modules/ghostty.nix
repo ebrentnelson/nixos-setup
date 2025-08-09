@@ -4,6 +4,7 @@
   programs.ghostty = {
     enable = true;
     settings = {
+      theme = "catppuccin-mocha";
       background-opacity = "0.95";  
       font-family = "GeistMono Nerd Font";
       font-size = 12;

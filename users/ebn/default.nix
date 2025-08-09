@@ -10,11 +10,13 @@
       ./modules/i3.nix 
       ./modules/polybar.nix
       ./modules/rofi.nix
+      ./modules/dunst.nix
     ] ++ lib.optionals (desktop == "hyprland") [
       ./modules/hyprland.nix
       ./modules/waybar.nix
       ./modules/wofi.nix
       ./modules/wlogout.nix
+      ./modules/mako.nix
     ];
 
   home.username = "ebn";

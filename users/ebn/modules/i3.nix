@@ -175,12 +175,45 @@
     };
   };
 
-  # Picom compositor configuration (for transparency and effects)
   services.picom = {
     enable = true;
     fade = true;
     fadeDelta = 4;
+    fadeSteps = [ 0.03 0.03 ];
     shadow = true;
     shadowOpacity = 0.75;
+    shadowOffsets = [ (-15) (-15) ];
+    shadowExclude = [
+      "class_g = 'i3-frame'"
+      "class_g ?= 'rofi'"
+      "_GTK_FRAME_EXTENTS@:c"
+    ];
+    activeOpacity = 1.0;
+    inactiveOpacity = 0.95;
+    opacityRules = [
+      "100:class_g = 'firefox'"
+      "100:class_g = 'Chromium-browser'"
+      "95:class_g = 'ghostty'"
+      "100:class_g = 'Rofi'"
+      "90:class_g = 'Thunar'"
+    ];
+    backend = "glx";
+    vSync = true;
+    settings = {
+      shadow-radius = 12;
+      corner-radius = 8;
+      rounded-corners-exclude = [
+        "window_type = 'dock'"
+        "window_type = 'desktop'"
+      ];
+      blur-method = "gaussian";
+      blur-size = 10;
+      blur-deviation = 5.0;
+      blur-background-exclude = [
+        "window_type = 'dock'"
+        "window_type = 'desktop'"
+        "_GTK_FRAME_EXTENTS@:c"
+      ];
+    };
   };
 }
