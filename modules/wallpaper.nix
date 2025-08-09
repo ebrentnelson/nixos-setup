@@ -27,13 +27,17 @@ let
       "$TEMP_WALLPAPER"
     
     echo "Setting wallpaper: $WALLPAPER"
-    
-    # Use swww for Wayland (Hyprland) or feh for X11 (i3)
-    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  
+    # Check if swww-daemon is running (Wayland) or use feh (X11)
+    if pgrep swww-daemon > /dev/null 2>&1; then
+      echo "Using swww (Wayland detected)"
       ${pkgs.swww}/bin/swww img "$TEMP_WALLPAPER" --transition-type fade --transition-duration 2 --resize crop
     else
+      echo "Using feh (X11 detected)"
       ${pkgs.feh}/bin/feh --bg-fill "$TEMP_WALLPAPER"
     fi
+    
+    echo "Script completed"
   '';
 in
 {
