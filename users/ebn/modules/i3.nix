@@ -173,66 +173,6 @@
     };
   };
 
-  # Polybar configuration (replaces waybar)
-  services.polybar = {
-    enable = true;
-    script = "polybar main &";
-    config = {
-      "bar/main" = {
-        width = "100%";
-        height = 30;
-        background = "#1e1e2e";
-        foreground = "#cdd6f4";
-        
-        modules-left = "i3";
-        modules-center = "date";
-        modules-right = "pulseaudio battery";
-        
-        font-0 = "GeistMono Nerd Font:size=10;2";
-      };
-      
-      "module/i3" = {
-        type = "internal/i3";
-        format = "<label-state> <label-mode>";
-        
-        label-focused = "%name%";
-        label-focused-background = "#fab387";
-        label-focused-foreground = "#1e1e2e";
-        label-focused-padding = 2;
-        
-        label-unfocused = "%name%";
-        label-unfocused-padding = 2;
-      };
-      
-      "module/date" = {
-        type = "internal/date";
-        interval = 1;
-        date = "%Y-%m-%d";
-        time = "%H:%M:%S";
-        label = "%date% %time%";
-      };
-      
-      "module/pulseaudio" = {
-        type = "internal/pulseaudio";
-        format-volume = "<ramp-volume> <label-volume>";
-        label-muted = "🔇 muted";
-        ramp-volume-0 = "🔈";
-        ramp-volume-1 = "🔉";
-        ramp-volume-2 = "🔊";
-      };
-      
-      "module/battery" = {
-        type = "internal/battery";
-        battery = "BAT0";  # Adjust if needed
-        adapter = "ADP1";   # Adjust if needed
-        format-charging = "🔌 <label-charging>";
-        format-discharging = "🔋 <label-discharging>";
-        label-charging = "%percentage%%";
-        label-discharging = "%percentage%%";
-      };
-    };
-  };
-  
   # Picom compositor configuration (for transparency and effects)
   services.picom = {
     enable = true;

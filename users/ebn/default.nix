@@ -7,6 +7,7 @@
     ./modules/ghostty.nix
   ] ++ lib.optionals (desktop == "i3") [
       ./modules/i3.nix 
+      ./modules/polybar.nix
     ] ++ lib.optionals (desktop == "hyprland") [
       ./modules/hyprland.nix
       ./modules/waybar.nix
