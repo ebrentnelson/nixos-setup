@@ -6,6 +6,7 @@
     ../../modules/common.nix
     ../../modules/desktop/i3.nix
     ../../modules/users/ebn.nix
+    ../../modules/wallpaper.nix
   ];
 
   networking.hostName = "moroni";
