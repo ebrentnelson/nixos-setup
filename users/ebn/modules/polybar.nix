@@ -70,7 +70,7 @@
 
       "module/powermenu" = {
         type = "custom/text";
-        content = " 󰐥 ";
+        content = " 󰐥   ";
         content-foreground = "#fe386e";
         click-left = "rofi -show p -modi p:rofi-power-menu -theme ~/.config/rofi/theme.rasi";
       };
