@@ -8,6 +8,7 @@
   ] ++ lib.optionals (desktop == "i3") [
       ./modules/i3.nix 
       ./modules/polybar.nix
+      ./modules/rofi.nix
     ] ++ lib.optionals (desktop == "hyprland") [
       ./modules/hyprland.nix
       ./modules/waybar.nix

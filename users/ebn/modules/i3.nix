@@ -8,7 +8,7 @@
       modifier = "Mod4";
       
       # Application launcher
-      menu = "rofi -show drun";
+      menu = "rofi -show drun -show-icons";
       bars = [];
       
       # Gaps configuration (similar to Hyprland)
@@ -55,7 +55,7 @@
         # Application shortcuts
         "${modifier}+f" = "exec thunar";
         "${modifier}+b" = "exec ${browser}";
-        "${modifier}+space" = "exec rofi -show drun";
+        "${modifier}+space" = "exec rofi -show drun -show-icons";
         "${modifier}+m" = "exec spotify";
         "${modifier}+n" = "exec ${terminal} -e nvim";
         "${modifier}+o" = "exec obsidian";
