@@ -17,82 +17,90 @@
   # Create custom theme file
   home.file.".config/rofi/theme.rasi".text = ''
     * {
-        bg-col:         #1e1e2e;
-        border-col:     #a6e3a1;
-        selected-col:   #a6e3a1;
-        fg-col:         #cdd6f4;
-        fg-col2:        #6c7086;
+        bg-col:         #111111;
+        bg-alt:         #1a1a1a;
+        border-col:     #333333;
+        selected-col:   #fe386e;
+        fg-col:         #f9f9f9;
+        fg-col2:        #888888;
+        urgent-col:     #fe386e;
         width:          600;
         font:           "GeistMono Nerd Font 14";
     }
-
-    element-text, element-icon , mode-switcher {
+    
+    element-text, element-icon, mode-switcher {
         background-color: inherit;
         text-color:       inherit;
     }
-
+    
     window {
         height: 400px;
         border: 2px;
         border-color: @border-col;
-        border-radius: 8px;
-        background-color: rgba(30, 30, 46, 0.95);
+        border-radius: 0px;
+        background-color: @bg-col;
     }
-
+    
     mainbox {
         background-color: @bg-col;
     }
-
+    
     inputbar {
         children: [prompt,entry];
-        background-color: @bg-col;
-        border-radius: 6px;
-        padding: 8px 12px;
-        margin: 10px;
-        border: 2px;
-        border-color: #45475a;
+        background-color: @bg-alt;
+        border-radius: 0px;
+        padding: 12px 16px;
+        margin: 0px;
+        border-bottom: 2px;
+        border-color: @border-col;
     }
-
+    
     prompt {
         background-color: transparent;
-        text-color: @fg-col;
-        margin: 0px 8px 0px 0px;
+        text-color: @selected-col;
+        margin: 0px 12px 0px 0px;
+        font-weight: bold;
     }
-
+    
     entry {
         background-color: transparent;
         text-color: @fg-col;
         placeholder-color: @fg-col2;
         placeholder: "Search...";
     }
-
+    
     listview {
-        border: 0px 0px 0px;
-        padding: 6px 0px 0px;
-        margin: 10px 10px 0px 10px;
+        border: 0px;
+        padding: 8px 0px 0px;
+        margin: 0px;
         columns: 1;
         lines: 8;
         background-color: @bg-col;
     }
-
+    
     element {
-        padding: 8px 12px;
-        margin: 2px;
-        border-radius: 4px;
+        padding: 12px 16px;
+        margin: 0px;
+        border-radius: 0px;
         background-color: transparent;
         text-color: @fg-col;
     }
-
+    
     element-icon {
-        size: 32px;
-        margin: 0px 10px 0px 0px;
+        size: 24px;
+        margin: 0px 12px 0px 0px;
     }
-
+    
     element selected {
-        background-color: rgba(166, 227, 161, 0.1);
-        border: 1px;
-        border-color: @selected-col;
+        background-color: @bg-alt;
+        border-left: 4px;
+        border-left-color: @selected-col;
         text-color: @fg-col;
+    }
+    
+    element selected.urgent {
+        background-color: @urgent-col;
+        text-color: @bg-col;
     }
   '';
 }
