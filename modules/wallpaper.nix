@@ -21,8 +21,9 @@ let
 
     ${pkgs.imagemagick}/bin/convert "$WALLPAPER" \
       -colorspace Gray \
-      -sigmoidal-contrast 15,50% \
-      -level 20%,80% \
+      -sigmoidal-contrast 10,50% \
+      -level 15%,85% \
+      -brightness-contrast 10x15 \
       "$TEMP_WALLPAPER"
     
     echo "Setting wallpaper: $WALLPAPER"
