@@ -9,6 +9,7 @@
       
       # Application launcher
       menu = "rofi -show drun";
+      bars = [];
       
       # Gaps configuration (similar to Hyprland)
       gaps = {
@@ -38,6 +39,7 @@
         { command = "xset s off"; notification = false; }  # Disable screensaver
         { command = "xset -dpms"; notification = false; }  # Disable DPMS
         { command = "xset s noblank"; notification = false; } # Disable screen blanking 
+        { command = "polybar main"; notification = false; }
       ];
       
       # Keybindings (adapted from your Hyprland config)

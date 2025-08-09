@@ -18,7 +18,7 @@
   # i3-specific system packages
   environment.systemPackages = with pkgs; [
     rofi
-    polybar
+    rofi-power-menu
     feh 
     scrot 
     xclip
