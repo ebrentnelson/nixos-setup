@@ -72,20 +72,31 @@ check:
 maintenance: update rebuild gc
 	@echo "Full maintenance complete!"
 
+# Collect files for Claude project
+collect-for-claude:
+	@mkdir -p ./generated/claude
+	@find . -type f -not -path "*/.git/*" | while read file; do \
+		relative_path=$${file#./}; \
+		target_name=$$(echo "$$relative_path" | sed 's|/|-|g'); \
+		cp "$$file" "./generated/claude/$$target_name"; \
+	done
+	@echo "Files collected in ./generated/claude/"	
+
 # Show available targets
 help:
 	@echo "Available targets:"
-	@echo "  update          - Update flake inputs"
-	@echo "  rebuild         - Rebuild current system (hostname: $(HOSTNAME))"
-	@echo "  switch          - Alias for rebuild"
-	@echo "  test            - Test configuration without switching"
-	@echo "  build           - Build configuration without activating"
-	@echo "  history         - Show system generation history"
-	@echo "  gc              - Garbage collect (remove 7+ day old generations)"
-	@echo "  clean           - More aggressive cleanup (3+ day old generations)"
-	@echo "  rebuild-host    - Rebuild specific host (usage: make rebuild-host HOST=lehi)"
-	@echo "  test-host       - Test specific host config (usage: make test-host HOST=lehi)"
-	@echo "  build-host      - Build specific host config (usage: make build-host HOST=lehi)"
-	@echo "  check           - Check flake configuration"
-	@echo "  maintenance     - Full update + rebuild + garbage collection"
-	@echo "  help            - Show this help message"
+	@echo "  update             - Update flake inputs"
+	@echo "  rebuild            - Rebuild current system (hostname: $(HOSTNAME))"
+	@echo "  switch             - Alias for rebuild"
+	@echo "  test               - Test configuration without switching"
+	@echo "  build              - Build configuration without activating"
+	@echo "  history            - Show system generation history"
+	@echo "  gc                 - Garbage collect (remove 7+ day old generations)"
+	@echo "  clean              - More aggressive cleanup (3+ day old generations)"
+	@echo "  rebuild-host       - Rebuild specific host (usage: make rebuild-host HOST=lehi)"
+	@echo "  test-host          - Test specific host config (usage: make test-host HOST=lehi)"
+	@echo "  build-host         - Build specific host config (usage: make build-host HOST=lehi)"
+	@echo "  check              - Check flake configuration"
+	@echo "  maintenance        - Full update + rebuild + garbage collection"
+	@echo "  collect-for-claude - Puts all files in a directory so they can be added to a Claude project easily"
+	@echo "  help               - Show this help message"
