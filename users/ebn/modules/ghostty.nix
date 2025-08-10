@@ -16,7 +16,7 @@
       selection-foreground = "#ffffff";
 
       # Appearance
-      background-opacity = "0.95";
+      background-opacity = 0.95;
       font-family = "GeistMono Nerd Font";
       font-size = 12;
       window-decoration = false;

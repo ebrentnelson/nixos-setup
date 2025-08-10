@@ -51,12 +51,6 @@
     brightnessctl 
     imagemagick
     gnumake
-    (pkgs.catppuccin-gtk.override {
-      accents = [ "blue" ];
-      size = "standard";
-      tweaks = [ "rimless" ];
-      variant = "mocha";
-    })
   ];
 
   environment.variables = {

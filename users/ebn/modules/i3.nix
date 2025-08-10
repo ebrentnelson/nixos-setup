@@ -203,13 +203,13 @@
       "class_g = 'polybar'"
     ];
     activeOpacity = 1.0;
-    inactiveOpacity = 0.92;
+    inactiveOpacity = 0.95;
     opacityRules = [
       "100:class_g = 'firefox'"
       "100:class_g = 'Chromium-browser'"
-      "92:class_g = 'ghostty'"
+      "95:class_g = 'ghostty'"
       "100:class_g = 'Rofi'"
-      "88:class_g = 'Thunar'"
+      "95:class_g = 'Thunar'"
       "100:name *= 'polybar'"
     ];
     backend = "glx";
