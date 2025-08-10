@@ -8,6 +8,7 @@
       modi = "drun,run,window";
       show-icons = true;
       drun-display-format = "{name}";
+      display-drun = "Apps:";
       disable-history = false;
       hide-scrollbar = true;
       sidebar-mode = false;
