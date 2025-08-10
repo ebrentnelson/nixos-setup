@@ -45,28 +45,28 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 4;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "rgba(fe386eff)";
+        "col.inactive_border" = "rgba(333333ff)";
         layout = "dwindle";
         allow_tearing = false;
       };
 
       # Decoration
       decoration = {
-        rounding = 8;
+        rounding = 0;
         blur = {
           enabled = true;
           size = 8;
           passes = 2;
-          vibrancy = 0.1696;
+          vibrancy = 0.1;
           ignore_opacity = true;
         };
         drop_shadow = true;
-        shadow_range = 12;
-        shadow_render_power = 3;
-        shadow_offset = "-15 -15";
-        "col.shadow" = "rgba(1a1a1aee)";
-        "col.shadow_inactive" = "rgba(1a1a1a88)";
+        shadow_range = 8;
+        shadow_render_power = 2;
+        shadow_offset = "-6 -6";
+        "col.shadow" = "rgba(000000aa)";
+        "col.shadow_inactive" = "rgba(00000055)";
       };
 
       # Animations
