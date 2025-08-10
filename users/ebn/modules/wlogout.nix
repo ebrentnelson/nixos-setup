@@ -45,31 +45,39 @@
       * {
         background-image: none;
         font-family: "GeistMono Nerd Font";
-        font-size: 20px;
+        font-size: 16px;
+        color: #f9f9f9;
       }
       
       window {
-        background-color: rgba(30, 30, 46, 0.9);
+        background-color: rgba(17, 17, 17, 0.95);
       }
       
       button {
-        color: #cdd6f4;
-        background-color: #313244;
+        color: #f9f9f9;
+        background-color: #1a1a1a;
         border-style: solid;
         border-width: 2px;
-        border-radius: 8px;
-        border-color: #45475a;
+        border-radius: 0px;
+        border-color: #333333;
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 25%;
-        margin: 10px;
-        transition: all 0.3s ease-in-out;
+        background-size: 20%;
+        margin: 12px;
+        padding: 20px;
+        transition: all 0.3s ease;
       }
       
-      button:focus, button:active, button:hover {
-        background-color: rgba(166, 227, 161, 0.2);
-        border-color: #a6e3a1;
+      button:focus, button:active {
+        background-color: #222222;
+        border-color: #fe386e;
         outline-style: none;
+      }
+      
+      button:hover {
+        background-color: #222222;
+        border-color: #fe386e;
+        color: #fe386e;
       }
       
       #lock {
