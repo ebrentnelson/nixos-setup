@@ -25,65 +25,77 @@
     style = ''
       window {
         margin: 0px;
-        border: 2px solid #a6e3a1;
-        border-radius: 8px;
-        background-color: rgba(30, 30, 46, 0.95);
+        border: 2px solid #333333;
+        border-radius: 0px;
+        background-color: #111111;
         font-family: "GeistMono Nerd Font";
         font-size: 14px;
       }
-
+    
       #input {
-        margin: 10px;
-        border: 2px solid #45475a;
-        border-radius: 6px;
-        background-color: #1e1e2e;
-        color: #cdd6f4;
-        padding: 8px 12px;
+        margin: 0px;
+        border: none;
+        border-bottom: 2px solid #333333;
+        border-radius: 0px;
+        background-color: #1a1a1a;
+        color: #f9f9f9;
+        padding: 12px 16px;
+        font-size: 14px;
       }
-
+    
       #input:focus {
-        border-color: #a6e3a1;
+        border-bottom-color: #fe386e;
         outline: none;
       }
-
+    
       #inner-box {
-        margin: 5px;
+        margin: 0px;
         border: none;
         background-color: transparent;
       }
-
+    
       #outer-box {
-        margin: 5px;
+        margin: 0px;
         border: none;
         background-color: transparent;
       }
-
+    
       #scroll {
         margin: 0px;
         border: none;
       }
-
+    
       #text {
-        margin: 5px;
+        margin: 0px;
         border: none;
-        color: #cdd6f4;
+        color: #f9f9f9;
+        font-weight: normal;
       }
-
+    
       #entry {
         border: none;
-        border-radius: 4px;
+        border-radius: 0px;
         background-color: transparent;
-        margin: 2px;
-        padding: 8px 12px;
+        margin: 0px;
+        padding: 12px 16px;
+        color: #f9f9f9;
       }
-
+    
       #entry:selected {
-        background-color: rgba(166, 227, 161, 0.1);
-        border: 1px solid #a6e3a1;
+        background-color: #1a1a1a;
+        border-left: 4px solid #fe386e;
       }
-
+    
       #entry:hover {
-        background-color: rgba(166, 227, 161, 0.05);
+        background-color: #222222;
+      }
+    
+      #entry:selected #text {
+        color: #f9f9f9;
+      }
+    
+      #entry image {
+        margin-right: 12px;
       }
     '';
   };
