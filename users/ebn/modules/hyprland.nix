@@ -93,7 +93,8 @@
       windowrulev2 = [
         "float, ^(pavucontrol)$"
         "float, ^(nm-connection-editor)$"
-        "opacity 0.9 override 0.9 override, class:^(thunar)$"
+        "opacity 0.95 override 0.95 override, class:^(thunar)$"
+        "opacity 0.95 override 0.95 override, class:^(com.mitchellh.ghostty)$"
       ];
 
       # Key bindings

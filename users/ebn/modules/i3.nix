@@ -208,6 +208,7 @@
       "100:class_g = 'firefox'"
       "100:class_g = 'Chromium-browser'"
       "95:class_g = 'ghostty'"
+      "95:class_g = 'com.mitchellh.ghostty'"
       "100:class_g = 'Rofi'"
       "95:class_g = 'Thunar'"
       "100:name *= 'polybar'"

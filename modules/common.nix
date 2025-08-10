@@ -32,6 +32,7 @@
 
   programs.zsh.enable = true;
   programs.thunar.enable = true;
+  programs.dconf.enable = true;
 
   # Common system packages
   environment.systemPackages = with pkgs; [
@@ -51,6 +52,7 @@
     brightnessctl 
     imagemagick
     gnumake
+    papirus-icon-theme
   ];
 
   environment.variables = {
