@@ -195,6 +195,7 @@
         "$mainMod, C, exec, $webapp='https://calendar.google.com/'"
         "$mainMod SHIFT, G, exec, $webapp='https://web.whatsapp.com/'"
         "$mainMod SHIFT, H, exec, $webapp='https://messages.google.com/web/'"
+        "$mainMod, P, exec, $webapp='https://figma.com'"
 
         # Wallpaper changing
         "$mainMod, comma, exec, systemctl --user start random-wallpaper.service"

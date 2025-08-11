@@ -61,11 +61,12 @@
         "${modifier}+o" = "exec obsidian";
 
         # Web app bindings (adapted from your Hyprland config)
-        "${modifier}+a" = "exec ${webapp}='https://claude.ai/new/'";
+        "${modifier}+a" = "exec ${webapp}='https://claude.ai/'";
         "${modifier}+e" = "exec ${webapp}='https://mail.google.com/'";
         "${modifier}+c" = "exec ${webapp}='https://calendar.google.com/'";
         "${modifier}+Shift+g" = "exec ${webapp}='https://web.whatsapp.com/'";
         "${modifier}+Shift+h" = "exec ${webapp}='https://messages.google.com/web/'";
+        "${modifier}+p" = "exec ${webapp}='https://figma.com/'";
 
         # Change wallpaper manually  
         "${modifier}+comma" = "exec systemctl --user start random-wallpaper.service";
