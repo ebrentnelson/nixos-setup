@@ -36,22 +36,38 @@
 
   # Common system packages
   environment.systemPackages = with pkgs; [
+    # Development Tools
     git
     gh
     neovim
+    nodejs
+    clojure
+    leiningen
     silver-searcher
+
+    # Build Tools
+    gcc
+    gnumake
+    pkg-config
+
+    # Web Browsers
     chromium
     firefox
+
+    # Applications
     ghostty
     spotify
     dropbox
     obsidian
+
+    # System Utilities
     networkmanagerapplet
     alsa-utils
     pavucontrol  
     brightnessctl 
     imagemagick
-    gnumake
+
+    # Themes
     papirus-icon-theme
   ];
 

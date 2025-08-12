@@ -1,4 +1,3 @@
-# neovim.nix - Your complete Neovim configuration
 { config, pkgs, ... }:
 
 {
@@ -8,62 +7,15 @@
     viAlias = true;
     vimAlias = true;
     
-    # Install plugins declaratively
+    # Only the bare minimum - lazy.nvim and essential tools
     plugins = with pkgs.vimPlugins; [
-      # Essential plugins
-      vim-sensible
-      
-      # Theme
-      gruvbox-nvim
-      
-      # File navigation
-      telescope-nvim
-      telescope-fzf-native-nvim
-      nvim-tree-lua
-      
-      # LSP and completion
-      nvim-lspconfig
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-buffer
-      cmp-path
-      luasnip
-      cmp_luasnip
-      
-      # Treesitter for syntax highlighting
-      (nvim-treesitter.withPlugins (p: [
-        p.nix
-        p.lua
-        p.clojure
-        p.javascript
-        p.typescript
-        p.python
-        p.rust
-        p.go
-        p.bash
-      ]))
-      
-      # Git integration
-      gitsigns-nvim
-      vim-fugitive
-      
-      # Status line
-      lualine-nvim
-      
-      # Clojure specific (since you code in Clojure!)
-      vim-fireplace
-      conjure
-      
-      # Additional useful plugins
-      comment-nvim
-      nvim-autopairs
-      indent-blankline-nvim
+      lazy-nvim
     ];
     
     # Your init.lua configuration
     extraLuaConfig = builtins.readFile ../dotfiles/nvim/init.lua;
     
-    # Extra packages needed for LSPs and tools
+    # Keep the LSP servers and tools (these aren't plugins)
     extraPackages = with pkgs; [
       # LSP servers
       clojure-lsp
