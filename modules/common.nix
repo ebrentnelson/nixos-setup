@@ -33,6 +33,7 @@
   programs.zsh.enable = true;
   programs.thunar.enable = true;
   programs.dconf.enable = true;
+  programs.adb.enable = true;
 
   # Common system packages
   environment.systemPackages = with pkgs; [
