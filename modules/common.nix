@@ -45,7 +45,7 @@
     leiningen
     silver-searcher
     openjdk17
-    awsci2
+    awscli2
     terraform
     dart
     flutter
