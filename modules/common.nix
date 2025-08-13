@@ -44,6 +44,11 @@
     clojure
     leiningen
     silver-searcher
+    openjdk17
+    awsci2
+    terraform
+    dart
+    flutter
 
     # Build Tools
     gcc
