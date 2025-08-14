@@ -73,9 +73,10 @@ require("lazy").setup({
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "lua", "nix", "clojure", "javascript", "typescript", "python", "rust", "go", "bash" },
+        ensure_installed = { "lua", "nix", "clojure", "javascript", "typescript", "python", "rust", "bash", "html", "css", "json", "yaml" },
         highlight = { enable = true },
         indent = { enable = true },
+        auto_install = true,
       }
     end,
   },
@@ -88,6 +89,18 @@ require("lazy").setup({
   { "hrsh7th/cmp-path" },
   { "L3MON4D3/LuaSnip" },
   { "saadparwaiz1/cmp_luasnip" },
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.nixfmt,
+        },
+      })
+    end,
+  },
 
   -- Git
   {
@@ -227,15 +240,7 @@ end
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
-    local filetype = vim.bo.filetype
-    if filetype == "nix" then
-      -- Use nixfmt for Nix files
-      vim.cmd("silent !nixfmt " .. vim.fn.shellescape(vim.fn.expand("%")))
-      vim.cmd("edit!")
-    else
-      -- Use LSP formatting for other files
-      vim.lsp.buf.format({ async = false })
-    end
+    vim.lsp.buf.format({ async = false })
   end,
 })
 
