@@ -227,7 +227,15 @@ end
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
-    vim.lsp.buf.format({ async = false })
+    local filetype = vim.bo.filetype
+    if filetype == "nix" then
+      -- Use nixfmt for Nix files
+      vim.cmd("silent !nixfmt " .. vim.fn.shellescape(vim.fn.expand("%")))
+      vim.cmd("edit!")
+    else
+      -- Use LSP formatting for other files
+      vim.lsp.buf.format({ async = false })
+    end
   end,
 })
 
