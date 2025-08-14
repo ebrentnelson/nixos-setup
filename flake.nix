@@ -9,42 +9,61 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
+  outputs =
+    { nixpkgs, home-manager, ... }:
+    {
+      nixosConfigurations = {
 
-      # Moroni (Desktop NUC)
-      moroni = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/moroni
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              users.ebn = import ./users/ebn { desktop = "i3"; };
-            };
-          }
-        ];
-      };
+        # Moroni (Desktop NUC)
+        moroni = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/moroni
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.ebn = import ./users/ebn { desktop = "i3"; };
+              };
+            }
+          ];
+        };
 
-      # Zeezrom (Thinkpad T480)
-      zeezrom = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/zeezrom
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              users.ebn = import ./users/ebn { desktop = "hyprland"; };
-            };
-          }
-        ];
+        # Zeezrom (Thinkpad T480)
+        zeezrom = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/zeezrom
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.ebn = import ./users/ebn { desktop = "hyprland"; };
+              };
+            }
+          ];
+        };
+
+        # Ziff (Acer Chromebook)
+        ziff = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/ziff
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.ebn = import ./users/ebn { desktop = "i3"; };
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }
