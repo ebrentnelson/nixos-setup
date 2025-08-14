@@ -10,6 +10,7 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:color_bg3 bg:color_bg1)\
+$nix_shell\
 $c\
 $rust\
 $golang\
@@ -53,6 +54,12 @@ format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
+[nix_shell]
+disabled = false
+style = "fg:color_pink bg:color_bg1"
+format = '[$state]($style)'
+impure_msg = ' dev-shell '
+
 [git_branch]
 symbol = ""
 style = "bg:color_bg3"
@@ -68,7 +75,7 @@ style = "bg:color_bg1"
 format = '[ $symbol $version ]($style)'
 
 [c]
-symbol = " "
+symbol = ""
 style = "bg:color_bg1"
 format = '[ $symbol $version ]($style)'
 

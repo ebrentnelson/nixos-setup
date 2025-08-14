@@ -75,6 +75,12 @@
 
     # Themes
     papirus-icon-theme
+
+    # Custom nix-shell wrapper
+    (pkgs.writeShellScriptBin "nix-shell" ''
+      # Use the real nix-shell but force it to run zsh afterwards
+      ${pkgs.nix}/bin/nix-shell "$@" --command "${pkgs.zsh}/bin/zsh"
+    '')
   ];
 
   environment.variables = {
