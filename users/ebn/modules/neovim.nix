@@ -21,7 +21,15 @@
       clojure-lsp
       nil  # Nix LSP
       nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      # Language servers
+      lua-language-server          # Lua LSP
+      pyright                     # Python LSP  
+      nodePackages.vscode-langservers-extracted  # HTML/CSS/JSON/ESLint
+      nodePackages.yaml-language-server          # YAML LSP
+      nodePackages.bash-language-server          # Bash LSP
       rust-analyzer
+      terraform-ls               # Terraform LSP
 
       # Additional tools
       ripgrep  # For telescope grep

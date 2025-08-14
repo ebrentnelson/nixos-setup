@@ -63,7 +63,7 @@ require("lazy").setup({
   {
     "nvim-tree/nvim-tree.lua",
     config = function()
-      require("nvim-tree").setup{}
+      require("nvim-tree").setup {}
     end,
   },
 
@@ -93,7 +93,7 @@ require("lazy").setup({
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require("gitsigns").setup{}
+      require("gitsigns").setup {}
     end,
   },
   { "tpope/vim-fugitive" },
@@ -102,7 +102,7 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",
     config = function()
-      require("lualine").setup{}
+      require("lualine").setup {}
     end,
   },
 
@@ -114,13 +114,13 @@ require("lazy").setup({
   {
     "numToStr/Comment.nvim",
     config = function()
-      require("Comment").setup{}
+      require("Comment").setup {}
     end,
   },
   {
     "windwp/nvim-autopairs",
     config = function()
-      require("nvim-autopairs").setup{}
+      require("nvim-autopairs").setup {}
     end,
   },
   { "lukas-reineke/indent-blankline.nvim" },
@@ -132,11 +132,11 @@ require("lazy").setup({
     config = function()
       require("toggleterm").setup({
         size = 20,
-        open_mapping = [[<c-\>]],  -- Ctrl+\ to toggle
+        open_mapping = [[<c-\>]], -- Ctrl+\ to toggle
         hide_numbers = true,
         shade_terminals = true,
         start_in_insert = true,
-        direction = 'float',  -- 'horizontal', 'vertical', or 'float'
+        direction = 'float', -- 'horizontal', 'vertical', or 'float'
         float_opts = {
           border = 'curved',
           winblend = 10,
@@ -177,7 +177,7 @@ keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 
 -- Window navigation
 keymap("n", "<C-h>", "<C-w>h")
-keymap("n", "<C-j>", "<C-w>j")  
+keymap("n", "<C-j>", "<C-w>j")
 keymap("n", "<C-k>", "<C-w>k")
 keymap("n", "<C-l>", "<C-w>l")
 
@@ -210,11 +210,26 @@ if ok then
   local capabilities = cmp_ok and cmp_nvim_lsp.default_capabilities() or {}
 
   -- Setup LSPs
-  if lspconfig.clojure_lsp then lspconfig.clojure_lsp.setup{ capabilities = capabilities } end
-  if lspconfig.nil_ls then lspconfig.nil_ls.setup{ capabilities = capabilities } end
-  if lspconfig.rust_analyzer then lspconfig.rust_analyzer.setup{ capabilities = capabilities } end
-  if lspconfig.ts_ls then lspconfig.ts_ls.setup{ capabilities = capabilities } end
+  if lspconfig.clojure_lsp then lspconfig.clojure_lsp.setup { capabilities = capabilities } end
+  if lspconfig.nil_ls then lspconfig.nil_ls.setup { capabilities = capabilities } end
+  if lspconfig.rust_analyzer then lspconfig.rust_analyzer.setup { capabilities = capabilities } end
+  if lspconfig.ts_ls then lspconfig.ts_ls.setup { capabilities = capabilities } end
+  if lspconfig.lua_ls then lspconfig.lua_ls.setup { capabilities = capabilities } end
+  if lspconfig.pyright then lspconfig.pyright.setup { capabilities = capabilities } end
+  if lspconfig.html then lspconfig.html.setup { capabilities = capabilities } end
+  if lspconfig.cssls then lspconfig.cssls.setup { capabilities = capabilities } end
+  if lspconfig.jsonls then lspconfig.jsonls.setup { capabilities = capabilities } end
+  if lspconfig.yamlls then lspconfig.yamlls.setup { capabilities = capabilities } end
+  if lspconfig.bashls then lspconfig.bashls.setup { capabilities = capabilities } end
+  if lspconfig.terraformls then lspconfig.terraformls.setup { capabilities = capabilities } end
 end
+
+-- Format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
+})
 
 -- Completion setup
 local cmp_ok, cmp = pcall(require, 'cmp')
