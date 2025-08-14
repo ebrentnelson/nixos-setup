@@ -244,6 +244,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+-- File type associations
+vim.filetype.add({
+  extension = {
+    cljd = "clojure",
+  }
+})
+
 -- Completion setup
 local cmp_ok, cmp = pcall(require, 'cmp')
 local luasnip_ok, luasnip = pcall(require, 'luasnip')
