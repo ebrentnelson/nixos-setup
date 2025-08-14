@@ -3,10 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/common.nix
-    ../../modules/desktop/i3.nix
-    ../../modules/users/ebn.nix
-    ../../modules/wallpaper/x11.nix
+    ../../modules/minimal.nix
   ];
 
   networking.hostName = "ziff";
